@@ -37,10 +37,17 @@ MonoBehaviour:
       onChosen:
         m_PersistentCalls:
           m_Calls: []
-    - choiceId: choice0
+    - choiceId: choice2
       text: this is choice 2
       nextNodeId: 4
       setFlag: choice2
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    - choiceId: choice3
+      text: 
+      nextNodeId: 5
+      setFlag: 
       onChosen:
         m_PersistentCalls:
           m_Calls: []
@@ -55,5 +62,11 @@ MonoBehaviour:
     nodeType: 0
     speaker: girl
     content: 'you choose choice 2, speaker: girl'
+    choices: []
+    defaultNextNodeId: 
+  - id: 5
+    nodeType: 0
+    speaker: Narrator
+    content: 'you choose choice 3 in the world, speaker: narrator'
     choices: []
     defaultNextNodeId: 

@@ -209,4 +209,25 @@ public class DialogueController : MonoBehaviour
     }
 
 
+    // For world choice selection from world (not UI)
+    public void OnWorldChoiceSelected(string choiceId)
+    {
+        if (currentNode == null)
+            return;
+
+        if (currentNode.nodeType != DialogueNodeType.Choice)
+            return;
+
+        foreach (var c in currentNode.choices)
+        {
+            if (c.choiceId == choiceId)
+            {
+                OnChoiceSelected(c);
+                return;
+            }
+        }
+
+        Debug.LogWarning("World choiceId not found in current node: " + choiceId);
+    }
+
 }
