@@ -16,12 +16,44 @@ MonoBehaviour:
   - id: start
     nodeType: 0
     speaker: Narrator
-    content: hello! let's test
+    content: hello! let's test ashdssfgdsaWERTHGNBVCXSAq
     choices: []
     defaultNextNodeId: 1
   - id: 1
     nodeType: 0
     speaker: Narrator
     content: so what's going on
+    choices: []
+    defaultNextNodeId: 2
+  - id: 2
+    nodeType: 1
+    speaker: Narrator
+    content: 
+    choices:
+    - choiceId: choice1
+      text: this is choice 1
+      nextNodeId: 3
+      setFlag: choice1
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    - choiceId: choice0
+      text: this is choice 2
+      nextNodeId: 4
+      setFlag: choice2
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    defaultNextNodeId: 1
+  - id: 3
+    nodeType: 0
+    speaker: boy
+    content: 'you choose choice 1, speaker: boy'
+    choices: []
+    defaultNextNodeId: 
+  - id: 4
+    nodeType: 0
+    speaker: girl
+    content: 'you choose choice 2, speaker: girl'
     choices: []
     defaultNextNodeId: 

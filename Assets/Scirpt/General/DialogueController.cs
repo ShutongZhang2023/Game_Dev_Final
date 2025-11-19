@@ -26,7 +26,6 @@ public class DialogueController : MonoBehaviour
 
     private void Start()
     {
-
         StartDialogue(dialogueAsset, startNodeId);
     }
 
@@ -40,6 +39,9 @@ public class DialogueController : MonoBehaviour
 
     private void ShowNode(string nodeId)
     {
+        ClearChoices();
+        waitingForChoice = false;
+
         currentNode = dialogueAsset.GetNodeById(nodeId);
 
         if (currentNode == null) {
@@ -76,7 +78,7 @@ public class DialogueController : MonoBehaviour
     }
 
     private void EndDialogue() {
-
+        gameObject.SetActive(false);
     }
 
     //use for dialogue node
@@ -144,6 +146,7 @@ public class DialogueController : MonoBehaviour
         }
     }
 
+    //use for choice node
     private void ShowChoiceNode()
     {
         textFinished = true;
@@ -153,7 +156,56 @@ public class DialogueController : MonoBehaviour
 
     private void ShowChoicesImmediately()
     {
-        
+        waitingForChoice = true;
+        foreach (var choice in currentNode.choices)
+        {
+            // for world choice with empty text
+            if (string.IsNullOrEmpty(choice.text))
+                continue;
+
+            GameObject btnObj = Object.Instantiate(choiceButtonPrefab, choicesContainer);
+            TextMeshProUGUI txt = btnObj.GetComponentInChildren<TextMeshProUGUI>();
+            Button btn = btnObj.GetComponent<Button>();
+
+            txt.text = choice.text;
+            ChoiceData capturedChoice = choice;
+            btn.onClick.AddListener(() =>
+            {
+                OnChoiceSelected(capturedChoice);
+            });
+        }
+    }
+
+    public void OnChoiceSelected(ChoiceData choice)
+    {
+        waitingForChoice = false;
+
+        if (!string.IsNullOrEmpty(choice.setFlag))
+        {
+            storyState.SetFlag(choice.setFlag);
+        }
+
+        if (choice.onChosen != null)
+        {
+            choice.onChosen.Invoke();
+        }
+
+        if (!string.IsNullOrEmpty(choice.nextNodeId))
+        {
+            ShowNode(choice.nextNodeId);
+        }
+        else
+        {
+            EndDialogue();
+        }
+    }
+
+    private void ClearChoices()
+    {
+        for (int i = choicesContainer.childCount - 1; i >= 0; i--)
+        {
+            Destroy(choicesContainer.GetChild(i).gameObject);
+        }
     }
 
 

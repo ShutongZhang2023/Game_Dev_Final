@@ -3,11 +3,12 @@ using UnityEngine;
 
 public class StoryState : MonoBehaviour
 {
-    private HashSet<string> flags = new HashSet<string>();
+    public HashSet<string> flags = new HashSet<string>();
 
     public void SetFlag(string flagName)
     {
         flags.Add(flagName);
+        Debug.Log(string.Join(", ", flags));
     }
 
     public bool HasFlag(string flagName)
