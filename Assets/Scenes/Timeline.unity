@@ -153,7 +153,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 679, y: -167}
+  m_AnchoredPosition: {x: 679, y: -193}
   m_SizeDelta: {x: 376, y: 263}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &552825688
@@ -763,15 +763,24 @@ MonoBehaviour:
   - startImage: {fileID: 1548827317}
     endImage: {fileID: 799262246}
     lineColor: {r: 1, g: 1, b: 1, a: 1}
+    customTexture: {fileID: 2800000, guid: 2ce5c55e85304b819a1826ecbc839aa5, type: 3}
     lineContainer: {fileID: 0}
+    arrowObject: {fileID: 0}
   - startImage: {fileID: 1548827317}
     endImage: {fileID: 552825687}
-    lineColor: {r: 0.4164247, g: 1, b: 0.19923961, a: 1}
+    lineColor: {r: 1, g: 1, b: 1, a: 1}
+    customTexture: {fileID: 2800000, guid: f88677df267a41d6be1e7a6133e7d227, type: 3}
     lineContainer: {fileID: 0}
+    arrowObject: {fileID: 0}
   lineThickness: 15
   totalPoints: 50
-  tangentStrength: 1
+  textureTiling: 2
+  tangentStrength: 1.5
   overlapAmount: 5
+  showArrows: 1
+  arrowSprite: {fileID: -4346244404228752641, guid: 5aa2f640a348e2448b0e2259f6097f4d, type: 3}
+  arrowSize: {x: 50, y: 40}
+  arrowColor: {r: 0.5009856, g: 0.5009856, b: 0.5009856, a: 1}
   autoUpdate: 1
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

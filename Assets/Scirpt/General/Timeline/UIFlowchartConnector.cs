@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections.Generic;
 
 [System.Serializable]
@@ -7,9 +8,10 @@ public class FlowchartConnection
     public RectTransform startImage;
     public RectTransform endImage;
     public Color lineColor = Color.white;
+    public Texture customTexture; // Optional texture for this specific line
 
-    [HideInInspector]
-    public GameObject lineContainer;
+    [HideInInspector] public GameObject lineContainer;
+    [HideInInspector] public GameObject arrowObject;
 }
 
 public class UIFlowchartConnector : MonoBehaviour
@@ -17,63 +19,52 @@ public class UIFlowchartConnector : MonoBehaviour
     [Header("Connections")]
     public List<FlowchartConnection> connections = new List<FlowchartConnection>();
 
-    [Header("Line Settings")]
-    [Range(1f, 50f)]
-    public float lineThickness = 8f;
+    [Header("Line Visuals")]
+    [Range(1f, 50f)] public float lineThickness = 8f;
+    [Range(10, 100)] public int totalPoints = 40;
+    [Tooltip("Requires Texture Wrap Mode = Repeat")]
+    public float textureTiling = 2.0f;
 
-    [Range(10, 100)]
-    public int totalPoints = 40;
-
-    [Range(0.1f, 3.0f)]
-    public float tangentStrength = 1.0f;
-
-    [Tooltip("How many pixels the line should go 'inside' the images to prevent gaps.")]
+    [Header("Curve Physics")]
+    [Range(0.1f, 3.0f)] public float tangentStrength = 1.0f;
     public float overlapAmount = 5f;
+
+    [Header("Arrow Settings")]
+    public bool showArrows = true;
+    public Sprite arrowSprite; // MUST POINT RIGHT by default
+    public Vector2 arrowSize = new Vector2(20, 20);
+    public Color arrowColor = Color.white;
 
     public bool autoUpdate = true;
 
-    void Start()
-    {
-        UpdateAllLines();
-    }
-
-    void Update()
-    {
-        if (autoUpdate) UpdateAllLines();
-    }
+    void Start() { UpdateAllLines(); }
+    void Update() { if (autoUpdate) UpdateAllLines(); }
 
     public void UpdateAllLines()
     {
         if (connections == null) return;
-
-        for (int i = 0; i < connections.Count; i++)
-        {
-            UpdateConnection(connections[i]);
-        }
+        for (int i = 0; i < connections.Count; i++) UpdateConnection(connections[i]);
     }
 
     void UpdateConnection(FlowchartConnection connection)
     {
         if (connection.startImage == null || connection.endImage == null) return;
 
-        // 1. Create or Get Container
+        // --- 1. Setup Line Container ---
         if (connection.lineContainer == null)
         {
             connection.lineContainer = new GameObject("ConnectionLine");
-            // Add the LineRenderer component immediately
             connection.lineContainer.AddComponent<UILineRenderer>();
         }
 
-        // 2. PARENTING FIX: Make the line a child of the End Image
+        // Parent Logic (Child of End Image)
         if (connection.lineContainer.transform.parent != connection.endImage)
         {
             connection.lineContainer.transform.SetParent(connection.endImage, false);
-
-            // Push to back so it renders behind any text inside the box (optional)
             connection.lineContainer.transform.SetAsFirstSibling();
         }
 
-        // Reset transform to ensure it sits at (0,0) of the End Image
+        // Reset Transform
         RectTransform lineRT = connection.lineContainer.GetComponent<RectTransform>();
         lineRT.anchorMin = new Vector2(0.5f, 0.5f);
         lineRT.anchorMax = new Vector2(0.5f, 0.5f);
@@ -82,69 +73,92 @@ public class UIFlowchartConnector : MonoBehaviour
         lineRT.localRotation = Quaternion.identity;
         lineRT.localScale = Vector3.one;
 
-
-        // 3. CALCULATE POINTS (In the coordinate space of the End Image)
-
-        // A. Get Start Point (Right side of Start Image)
-        // We get the World Position, then convert it to End Image's Local Space
+        // --- 2. Calculate Points ---
         Vector3 startWorldPos = GetWorldPointOnRect(connection.startImage, new Vector2(1, 0.5f));
         Vector2 startLocalPos = connection.endImage.InverseTransformPoint(startWorldPos);
-
-        // B. Get End Point (Left side of End Image)
-        // Since we are inside the End Image, we just use its own rect
         Rect endRect = connection.endImage.rect;
         Vector2 endLocalPos = new Vector2(endRect.xMin, endRect.center.y);
 
-        // 4. GAP FIX: Apply Overlap
-        // Move the start point slightly to the left (local space) and end point slightly right
-        // Note: Since start is likely to the left of end, we need to check direction or just force X
-
-        // Push Start point inside the Start Image (Move Left)
         startLocalPos.x -= overlapAmount;
-
-        // Push End point inside the End Image (Move Right)
         endLocalPos.x += overlapAmount;
 
+        // Generate Bezier Points
+        List<Vector2> points = GenerateCubicBezierPoints(startLocalPos, endLocalPos, connection);
 
-        // 5. Generate Curve
-        List<Vector2> points = GenerateCubicBezierPoints(startLocalPos, endLocalPos);
-
-        // 6. Update Renderer
+        // --- 3. Update Line Renderer ---
         UILineRenderer lineRenderer = connection.lineContainer.GetComponent<UILineRenderer>();
         lineRenderer.lineThickness = lineThickness;
         lineRenderer.color = connection.lineColor;
+        lineRenderer.lineTexture = connection.customTexture;
+        lineRenderer.tiling = textureTiling;
         lineRenderer.SetPoints(points);
-
-        // Ensure the raycast target is off so the line doesn't block mouse clicks
         lineRenderer.raycastTarget = false;
+
+        // --- 4. Arrow Logic ---
+        UpdateArrow(connection, startLocalPos, endLocalPos);
     }
 
-    // Helper to get a point on a RectTransform in World Space
+    void UpdateArrow(FlowchartConnection connection, Vector2 start, Vector2 end)
+    {
+        if (!showArrows || arrowSprite == null)
+        {
+            if (connection.arrowObject != null) Destroy(connection.arrowObject);
+            return;
+        }
+
+        if (connection.arrowObject == null)
+        {
+            connection.arrowObject = new GameObject("DirectionArrow");
+            connection.arrowObject.transform.SetParent(connection.lineContainer.transform, false);
+            Image img = connection.arrowObject.AddComponent<Image>();
+            img.raycastTarget = false;
+        }
+
+        // Setup Image
+        Image arrowImg = connection.arrowObject.GetComponent<Image>();
+        arrowImg.sprite = arrowSprite;
+        arrowImg.color = arrowColor;
+        arrowImg.rectTransform.sizeDelta = arrowSize;
+
+        // Calculate Middle Position and Rotation
+        // We use the control points logic here again to find the exact middle (t=0.5)
+        float distance = Mathf.Abs(start.x - end.x);
+        float handleX = Mathf.Max(distance * 0.5f * tangentStrength, 20f);
+
+        Vector2 p0 = start;
+        Vector2 p1 = start + Vector2.right * handleX;
+        Vector2 p2 = end + Vector2.left * handleX;
+        Vector2 p3 = end;
+
+        // Position at t = 0.5
+        Vector2 arrowPos = CalculateBezierPoint(0.5f, p0, p1, p2, p3);
+
+        // Rotation: Look slightly ahead (t=0.51) to get direction
+        Vector2 arrowLookPos = CalculateBezierPoint(0.51f, p0, p1, p2, p3);
+        Vector2 dir = (arrowLookPos - arrowPos).normalized;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+
+        RectTransform arrowRT = arrowImg.rectTransform;
+        arrowRT.anchoredPosition = arrowPos;
+        arrowRT.localRotation = Quaternion.Euler(0, 0, angle);
+    }
+
     Vector3 GetWorldPointOnRect(RectTransform rect, Vector2 normalizedPivot)
     {
         Vector3[] corners = new Vector3[4];
         rect.GetWorldCorners(corners);
-
-        // corners[0] = bottom-left, corners[1] = top-left
-        // corners[2] = top-right,   corners[3] = bottom-right
-
-        // Simple Lerp for Right-Middle (1, 0.5) or Left-Middle (0, 0.5)
-        Vector3 result = Vector3.Lerp(
-            Vector3.Lerp(corners[0], corners[3], normalizedPivot.x), // Bottom X lerp
-            Vector3.Lerp(corners[1], corners[2], normalizedPivot.x), // Top X lerp
-            normalizedPivot.y // Y lerp
+        return Vector3.Lerp(
+            Vector3.Lerp(corners[0], corners[3], normalizedPivot.x),
+            Vector3.Lerp(corners[1], corners[2], normalizedPivot.x),
+            normalizedPivot.y
         );
-
-        return result;
     }
 
-    List<Vector2> GenerateCubicBezierPoints(Vector2 start, Vector2 end)
+    List<Vector2> GenerateCubicBezierPoints(Vector2 start, Vector2 end, FlowchartConnection conn)
     {
         List<Vector2> points = new List<Vector2>();
-
         float distance = Mathf.Abs(start.x - end.x);
-        float handleX = distance * 0.5f * tangentStrength;
-        handleX = Mathf.Max(handleX, 20f);
+        float handleX = Mathf.Max(distance * 0.5f * tangentStrength, 20f);
 
         Vector2 p0 = start;
         Vector2 p1 = start + Vector2.right * handleX;
@@ -153,10 +167,8 @@ public class UIFlowchartConnector : MonoBehaviour
 
         for (int i = 0; i <= totalPoints; i++)
         {
-            float t = i / (float)totalPoints;
-            points.Add(CalculateBezierPoint(t, p0, p1, p2, p3));
+            points.Add(CalculateBezierPoint(i / (float)totalPoints, p0, p1, p2, p3));
         }
-
         return points;
     }
 
@@ -172,7 +184,6 @@ public class UIFlowchartConnector : MonoBehaviour
         p += 3 * uu * t * p1;
         p += 3 * u * tt * p2;
         p += ttt * p3;
-
         return p;
     }
 }

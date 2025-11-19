@@ -6,13 +6,23 @@ using System.Collections.Generic;
 public class UILineRenderer : MaskableGraphic
 {
     public float lineThickness = 10f;
+    public bool relativeSize = false; // If true, UVs stretch. If false, they tile.
+    public float tiling = 1.0f;       // How often the texture repeats
 
-    [SerializeField]
-    private List<Vector2> points = new List<Vector2>();
+    public Texture lineTexture;
+    [SerializeField] private List<Vector2> points = new List<Vector2>();
+
+    // Override mainTexture to allow custom textures (dotted lines, etc)
+    public override Texture mainTexture
+    {
+        get
+        {
+            return lineTexture == null ? s_WhiteTexture : lineTexture;
+        }
+    }
 
     public void SetPoints(List<Vector2> pointList)
     {
-        // Create a copy to avoid reference issues
         points = new List<Vector2>(pointList);
         SetVerticesDirty();
     }
@@ -24,48 +34,49 @@ public class UILineRenderer : MaskableGraphic
         if (points == null || points.Count < 2)
             return;
 
+        float distance = 0f;
+
         for (int i = 0; i < points.Count; i++)
         {
             Vector2 point = points[i];
             Vector2 dir;
 
-            // Calculate direction (tangent) at this point
-            if (i == 0)
-            {
-                // Start point: Look at next
-                dir = (points[i + 1] - point).normalized;
-            }
-            else if (i == points.Count - 1)
-            {
-                // End point: Look at prev
-                dir = (point - points[i - 1]).normalized;
-            }
+            // Calculate direction
+            if (i == 0) dir = (points[i + 1] - point).normalized;
+            else if (i == points.Count - 1) dir = (point - points[i - 1]).normalized;
             else
             {
-                // Middle points: Average the direction of incoming and outgoing
                 Vector2 dirPrev = (point - points[i - 1]).normalized;
                 Vector2 dirNext = (points[i + 1] - point).normalized;
                 dir = (dirPrev + dirNext).normalized;
             }
 
-            // Calculate perpendicular vector (Normal)
-            // (-y, x) rotates the vector 90 degrees
+            // Calculate distance for UV tiling
+            if (i > 0)
+            {
+                distance += Vector2.Distance(points[i], points[i - 1]);
+            }
+
+            // Calculate UV Y coordinate
+            // If relativeSize is true, we map 0..1 across the whole line
+            // If false, we map based on pixels (good for repeating patterns)
+            float uvY = relativeSize ? (float)i / (points.Count - 1) : distance / (lineThickness * tiling);
+
+            // Calculate Normals
             Vector2 normal = new Vector2(-dir.y, dir.x) * (lineThickness / 2f);
 
-            // Add two vertices (left and right side of the line)
-            vh.AddVert(point - normal, color, Vector2.zero);
-            vh.AddVert(point + normal, color, Vector2.zero);
+            // Add Vertices with UVs
+            // UV X: 0 = Top of line, 1 = Bottom of line
+            vh.AddVert(point - normal, color, new Vector2(0, uvY));
+            vh.AddVert(point + normal, color, new Vector2(1, uvY));
 
-            // Add triangles to connect this segment to the previous one
-            // We skip the very first point because it has no previous point to connect to
+            // Add Triangles
             if (i > 0)
             {
                 int currentVertIndex = i * 2;
                 int prevVertIndex = (i - 1) * 2;
 
-                // Connect Left-Prev, Left-Curr, Right-Prev
                 vh.AddTriangle(prevVertIndex, currentVertIndex, prevVertIndex + 1);
-                // Connect Right-Prev, Left-Curr, Right-Curr
                 vh.AddTriangle(prevVertIndex + 1, currentVertIndex, currentVertIndex + 1);
             }
         }
