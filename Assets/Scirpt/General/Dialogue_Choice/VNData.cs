@@ -1,6 +1,7 @@
 using System;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.Rendering;
 
 
 // Enum to represent different types of dialogue nodes, can be expanded as needed
@@ -17,6 +18,7 @@ public class ChoiceData
 {
     public string choiceId; // must contain
     public string text;            // Text on UI, can be empty
+    public string needFlag;      // can be empty, choice will show only if flag is set
     public string nextNodeId; // must contain
     public string setFlag;         // can be empty, tag will set after chosen
     public UnityEvent onChosen;    // can be empty, event gonna invoke after chosen

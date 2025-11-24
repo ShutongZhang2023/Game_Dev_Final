@@ -32,6 +32,7 @@ MonoBehaviour:
     choices:
     - choiceId: choice1
       text: this is choice 1
+      needFlag: 
       nextNodeId: 3
       setFlag: choice1
       onChosen:
@@ -39,6 +40,7 @@ MonoBehaviour:
           m_Calls: []
     - choiceId: choice2
       text: this is choice 2
+      needFlag: 
       nextNodeId: 4
       setFlag: choice2
       onChosen:
@@ -46,6 +48,7 @@ MonoBehaviour:
           m_Calls: []
     - choiceId: choice3
       text: 
+      needFlag: 
       nextNodeId: 5
       setFlag: 
       onChosen:
@@ -57,16 +60,44 @@ MonoBehaviour:
     speaker: boy
     content: 'you choose choice 1, speaker: boy'
     choices: []
-    defaultNextNodeId: 
+    defaultNextNodeId: 6
   - id: 4
     nodeType: 0
     speaker: girl
     content: 'you choose choice 2, speaker: girl'
     choices: []
-    defaultNextNodeId: 
+    defaultNextNodeId: 6
   - id: 5
     nodeType: 0
     speaker: Narrator
     content: 'you choose choice 3 in the world, speaker: narrator'
+    choices: []
+    defaultNextNodeId: 6
+  - id: 6
+    nodeType: 1
+    speaker: 
+    content: 
+    choices:
+    - choiceId: choice2-1
+      text: choice2-1, only appear if you choose choice 1
+      needFlag: choice1
+      nextNodeId: 7
+      setFlag: 
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    - choiceId: choice2-2
+      text: choice2-2, no condition
+      needFlag: 
+      nextNodeId: 7
+      setFlag: 
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    defaultNextNodeId: 7
+  - id: 7
+    nodeType: 0
+    speaker: narrator
+    content: final
     choices: []
     defaultNextNodeId: 
