@@ -33,7 +33,7 @@ MonoBehaviour:
     - choiceId: choice1
       text: this is choice 1
       nextNodeId: 3
-      setFlag: choice1
+      setFlag: choice1/2
       onChosen:
         m_PersistentCalls:
           m_Calls: []
