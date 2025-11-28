@@ -5,6 +5,12 @@ public class StoryState : MonoBehaviour
 {
     public List<string> currentFlags = new List<string>();
     public List<string> persistedFlags = new List<string>();
+    public static StoryState instance;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     public void SetFlag(string flagName)
     {

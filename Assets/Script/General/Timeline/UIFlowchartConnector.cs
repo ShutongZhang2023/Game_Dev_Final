@@ -16,6 +16,7 @@ public class FlowchartConnection
 
 public class UIFlowchartConnector : MonoBehaviour
 {
+    public static UIFlowchartConnector instance;
     [Header("Connections")]
     public List<FlowchartConnection> connections = new List<FlowchartConnection>();
 
@@ -36,6 +37,11 @@ public class UIFlowchartConnector : MonoBehaviour
     public Color arrowColor = Color.white;
 
     public bool autoUpdate = true;
+
+    private void Awake()
+    {
+        instance = this;
+    }
 
     void Start() { UpdateAllLines(); }
     void Update() { if (autoUpdate) UpdateAllLines(); }
@@ -186,4 +192,32 @@ public class UIFlowchartConnector : MonoBehaviour
         p += ttt * p3;
         return p;
     }
+
+    public void CreateConnection(RectTransform start, RectTransform end)
+    {
+        FlowchartConnection newConn = new FlowchartConnection
+        {
+            startImage = start,
+            endImage = end
+        };
+
+        connections.Add(newConn);
+        UpdateConnection(newConn);
+    }
+
+    public void ClearConnections()
+    {
+        foreach (var conn in connections)
+        {
+            if (conn.lineContainer != null)
+            {
+                Destroy(conn.lineContainer);
+            }
+            if (conn.arrowObject != null)
+            {
+                Destroy(conn.arrowObject);
+            }
+        }
+        connections.Clear();
+    }   
 }
