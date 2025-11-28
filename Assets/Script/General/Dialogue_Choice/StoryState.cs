@@ -3,22 +3,46 @@ using UnityEngine;
 
 public class StoryState : MonoBehaviour
 {
-    public HashSet<string> flags = new HashSet<string>();
+    public List<string> currentFlags = new List<string>();
+    public List<string> persistedFlags = new List<string>();
 
     public void SetFlag(string flagName)
     {
-        flags.Add(flagName);
-        Debug.Log(string.Join(", ", flags));
+        if (!currentFlags.Contains(flagName))
+        {
+            currentFlags.Add(flagName);
+        }
+
+        if (!persistedFlags.Contains(flagName))
+        {
+            persistedFlags.Add(flagName);
+        }
     }
 
     public bool HasFlag(string flagName)
     {
-        return flags.Contains(flagName);
+        return currentFlags.Contains(flagName);
     }
 
-    public void ClearFlag(string flagName)
+    public bool HasPersistedFlag(string flagName)
     {
-        flags.Remove(flagName);
+        return persistedFlags.Contains(flagName);
+    }
+
+    public void ClearFromFlag(string flagName)
+    {
+        int indexToRemove = currentFlags.IndexOf(flagName);
+        int countToRemove = currentFlags.Count - indexToRemove;
+
+        if (countToRemove > 0)
+        {
+            currentFlags.RemoveRange(indexToRemove, countToRemove);
+        }
+    }
+
+    public void ResetCurrentFlags()
+    {
+        currentFlags.Clear();
     }
 
 }
