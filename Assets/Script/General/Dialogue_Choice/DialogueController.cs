@@ -160,6 +160,12 @@ public class DialogueController : MonoBehaviour
         waitingForChoice = true;
         foreach (var choice in currentNode.choices)
         {
+            //check needFlag
+            if (!string.IsNullOrEmpty(choice.needFlag))
+            {
+                if (!storyState.HasFlag(choice.needFlag))
+                    continue;
+            }
             // for world choice with empty text
             if (string.IsNullOrEmpty(choice.text))
                 continue;
