@@ -138,3 +138,6 @@ MonoBehaviour:
   requiredFlag: Scene1Choice1/2
   childNodes: []
   uiRect: {fileID: 5987890743568619715}
+  currentColor: {r: 0, g: 1, b: 0, a: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  nodeImage: {fileID: 4659948508937599340}

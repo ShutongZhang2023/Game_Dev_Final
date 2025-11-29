@@ -193,12 +193,13 @@ public class UIFlowchartConnector : MonoBehaviour
         return p;
     }
 
-    public void CreateConnection(RectTransform start, RectTransform end)
+    public void CreateConnection(RectTransform start, RectTransform end, Color lineColor)
     {
         FlowchartConnection newConn = new FlowchartConnection
         {
             startImage = start,
-            endImage = end
+            endImage = end,
+            lineColor = lineColor
         };
 
         connections.Add(newConn);

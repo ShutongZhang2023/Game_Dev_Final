@@ -6,6 +6,8 @@ public class TimelineController : MonoBehaviour
 {
     public Transform nodeContainer;
     private List<TimelineNode> nodes = new List<TimelineNode>();
+    public Color currentLineColor = Color.green;
+    public Color defaultLineColor = Color.white;
 
     private void OnEnable()
     {
@@ -15,9 +17,9 @@ public class TimelineController : MonoBehaviour
 
     private IEnumerator DelayedRebuild()
     {
-        yield return null;   // 等 1 帧，确保 RectTransform 和 Canvas 布局稳定
+        yield return null;
 
-        RebuildTimeline();   // 现在重建线不会出现任何 null / 坐标错误
+        RebuildTimeline();
     }
 
     private void LoadNodes()
@@ -39,6 +41,7 @@ public class TimelineController : MonoBehaviour
         {
             if (node == null) continue;
             node.RefreshVisibility();
+            node.RefreshHighlight();
         }
 
         UIFlowchartConnector.instance.ClearConnections();
@@ -47,14 +50,19 @@ public class TimelineController : MonoBehaviour
         {
             if (!parent.gameObject.activeSelf) continue;
 
+            bool isParentCompleted = parent.isCurrentNode;
+
             foreach (var child in parent.childNodes)
             {
                 if (child == null) continue;
                 if (!child.gameObject.activeSelf) continue;
+                bool isChildCompleted = child.isCurrentNode;
+                Color lineColor = (isParentCompleted && isChildCompleted) ? currentLineColor : defaultLineColor;
 
                 UIFlowchartConnector.instance.CreateConnection(
                     parent.uiRect,
-                    child.uiRect
+                    child.uiRect,
+                    lineColor
                 );
             }
         }

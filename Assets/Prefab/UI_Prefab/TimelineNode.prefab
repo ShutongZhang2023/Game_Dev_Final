@@ -265,6 +265,9 @@ MonoBehaviour:
   requiredFlag: Scene1
   childNodes: []
   uiRect: {fileID: 4732538432664503800}
+  currentColor: {r: 0, g: 1, b: 0, a: 1}
+  normalColor: {r: 1, g: 1, b: 1, a: 1}
+  nodeImage: {fileID: 1957510716943194872}
 --- !u!1 &8616200853113142914
 GameObject:
   m_ObjectHideFlags: 0
