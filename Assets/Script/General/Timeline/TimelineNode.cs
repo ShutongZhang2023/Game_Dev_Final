@@ -55,7 +55,7 @@ public class TimelineNode : MonoBehaviour
     {
         if (!isSceneNode) return;
         Debug.Log("Loading scene: " + connectedSceneName);
-        // SceneManager.LoadScene(connectedSceneName);
+        SceneManager.instance.ChangeContentScene(connectedSceneName);
     }
 
 }
