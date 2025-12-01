@@ -328,8 +328,8 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!224 &799262246
+  m_IsActive: 0
+--- !u!224 &924802273
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -432,10 +432,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1284340610}
-  - component: {fileID: 1284340609}
-  - component: {fileID: 1284340608}
-  - component: {fileID: 1284340611}
+  - component: {fileID: 1740034801}
+  - component: {fileID: 1740034800}
+  - component: {fileID: 1740034799}
+  - component: {fileID: 1740034802}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -517,13 +517,13 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1284340611
+--- !u!114 &1740034802
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1284340607}
+  m_GameObject: {fileID: 1740034798}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
@@ -561,7 +561,7 @@ MonoBehaviour:
     m_MipBias: 0
     m_VarianceClampScale: 0.9
     m_ContrastAdaptiveSharpening: 0
---- !u!1 &1548827316
+--- !u!1 &1874953632
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -759,29 +759,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96c15a39c10e0624782c1ce70dbf23aa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connections:
-  - startImage: {fileID: 1548827317}
-    endImage: {fileID: 799262246}
-    lineColor: {r: 1, g: 0.81320745, b: 0.066037595, a: 1}
-    customTexture: {fileID: 2800000, guid: f88677df267a41d6be1e7a6133e7d227, type: 3}
-    lineContainer: {fileID: 0}
-    arrowObject: {fileID: 0}
-  - startImage: {fileID: 1548827317}
-    endImage: {fileID: 552825687}
-    lineColor: {r: 1, g: 1, b: 1, a: 1}
-    customTexture: {fileID: 2800000, guid: f88677df267a41d6be1e7a6133e7d227, type: 3}
-    lineContainer: {fileID: 0}
-    arrowObject: {fileID: 0}
-  lineThickness: 15
-  totalPoints: 50
-  textureTiling: 2
-  tangentStrength: 1.5
-  overlapAmount: 5
-  showArrows: 0
-  arrowSprite: {fileID: -4346244404228752641, guid: 5aa2f640a348e2448b0e2259f6097f4d, type: 3}
-  arrowSize: {x: 50, y: 40}
-  arrowColor: {r: 0.5009856, g: 0.5009856, b: 0.5009856, a: 1}
-  autoUpdate: 1
+  narrationText: {fileID: 0}
+  zoomPanel: {fileID: 0}
+  zoomImage: {fileID: 0}
+  bedSprite: {fileID: 0}
+  deskSprite: {fileID: 0}
+  trashSprite: {fileID: 0}
+  curtainSprite: {fileID: 0}
+  bedButton: {fileID: 0}
+  deskButton: {fileID: 0}
+  trashButton: {fileID: 0}
+  curtainButton: {fileID: 0}
+  windClip: {fileID: 0}
+  windVolume: 0.8
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
