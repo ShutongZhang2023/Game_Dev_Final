@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Scene4
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueAsset
+  nodes:
+  - id: start
+    nodeType: 1
+    speaker: Narrator
+    content: Please Choose
+    choices:
+    - choiceId: 1
+      text: She is talking too much...
+      needFlag: 
+      nextNodeId: d1
+      setFlag: Scene4Choice1
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    - choiceId: 2
+      text: I just want to get out of this situation...
+      needFlag: 
+      nextNodeId: d2
+      setFlag: Scene4Choice2
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    - choiceId: 3
+      text: She just want me to listen to her
+      needFlag: 
+      nextNodeId: d3
+      setFlag: Scene4Choice3
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    defaultNextNodeId: 
+  - id: d1
+    nodeType: 0
+    speaker: Narrator
+    content: 'Favorability: -2'
+    choices: []
+    defaultNextNodeId: 
+  - id: d2
+    nodeType: 0
+    speaker: Narrator
+    content: 'Favorability: 0'
+    choices: []
+    defaultNextNodeId: 
+  - id: d3
+    nodeType: 0
+    speaker: Narrator
+    content: 'Favorability: +2'
+    choices: []
+    defaultNextNodeId: 
