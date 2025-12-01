@@ -5,8 +5,8 @@ using UnityEngine;
 public class Scene3Script : MonoBehaviour
 {
 
-    public GameObject choicePanel, herChat1, myChat1, myChatObj;
-    public TextMeshProUGUI herChatText1, myChatText1, myChatText;
+    public GameObject choicePanel, herChat1, myChat1, myChatObj, herChat2;
+    public TextMeshProUGUI herChatText1, myChatText1, myChatText, herChatText2;
 
     void Start()
     {
@@ -51,23 +51,34 @@ public class Scene3Script : MonoBehaviour
 
     public void ChoiceSelected(string flagName)
     {
-        myChatObj.SetActive(true);
-
         Debug.Log("Flag selected: " + flagName);
 
+        string text = "?";
         if (flagName.Equals("Scene3Choice1"))
         {
-            myChatText.text = "She's so sensitive...";
+            text = "She's so sensitive...";
         }
         else if (flagName.Equals("Scene3Choice2"))
         {
-            myChatText.text = "Maybe I was just not feeling it on that day...";
+            text = "Maybe I was just not feeling it on that day...";
         } 
         else if (flagName.Equals("Scene3Choice3"))
         {
-            myChatText.text = "I didn't even ask her feelings on that day.";
+            text = "I didn't even ask her feelings on that day.";
         }
 
+        StartCoroutine(ShowReplyMessagesCo(text));
+    }
+
+    IEnumerator ShowReplyMessagesCo(string text)
+    {
+        yield return new WaitForSeconds(1f);
+
+        myChatObj.SetActive(true);
+        yield return StartCoroutine(TypeTextCoroutine(myChatText, text));
+
+        herChat2.SetActive(true);
+        yield return StartCoroutine(TypeTextCoroutine(herChatText2, "..."));
     }
 
 }
