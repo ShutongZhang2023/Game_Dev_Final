@@ -16,29 +16,29 @@ MonoBehaviour:
   - id: start
     nodeType: 1
     speaker: Narrator
-    content: "\u8BF7\u9009\u62E9"
+    content: Please Choose
     choices:
     - choiceId: 1
-      text: "\u5979\u8BF4\u592A\u591A\u4E86"
+      text: She is talking too much...
       needFlag: 
       nextNodeId: d1
-      setFlag: 
+      setFlag: Scene4Choice1
       onChosen:
         m_PersistentCalls:
           m_Calls: []
     - choiceId: 2
-      text: "\u6211\u771F\u7684\u53EA\u662F\u60F3\u5FEB\u901F\u89E3\u51B3\u95EE\u9898"
+      text: I just want to get out of this situation...
       needFlag: 
       nextNodeId: d2
-      setFlag: 
+      setFlag: Scene4Choice2
       onChosen:
         m_PersistentCalls:
           m_Calls: []
     - choiceId: 3
-      text: "\u5979\u53EA\u662F\u60F3\u6211\u613F\u610F\u542C\u5979\u8BF4"
+      text: She just want me to listen to her
       needFlag: 
       nextNodeId: d3
-      setFlag: Clue B
+      setFlag: Scene4Choice3
       onChosen:
         m_PersistentCalls:
           m_Calls: []
@@ -46,18 +46,18 @@ MonoBehaviour:
   - id: d1
     nodeType: 0
     speaker: Narrator
-    content: "\u597D\u611F\u5EA6\uFF1A-2 "
+    content: 'Favorability: -2'
     choices: []
     defaultNextNodeId: 
   - id: d2
     nodeType: 0
     speaker: Narrator
-    content: "\u597D\u611F\u5EA6\uFF1A0"
+    content: 'Favorability: 0'
     choices: []
     defaultNextNodeId: 
   - id: d3
     nodeType: 0
     speaker: Narrator
-    content: "\u597D\u611F\u5EA6\uFF1A+2 "
+    content: 'Favorability: +2'
     choices: []
     defaultNextNodeId: 
