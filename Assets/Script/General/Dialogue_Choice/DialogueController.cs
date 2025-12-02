@@ -10,7 +10,6 @@ public class DialogueController : MonoBehaviour
     [Header("Data")]
     public DialogueAsset dialogueAsset;
     public string startNodeId = "start";
-    public StoryState storyState;
 
     [Header("UI")]
     public TextMeshProUGUI contentText;
@@ -163,7 +162,7 @@ public class DialogueController : MonoBehaviour
             //check needFlag
             if (!string.IsNullOrEmpty(choice.needFlag))
             {
-                if (!storyState.HasFlag(choice.needFlag))
+                if (!StoryState.instance.HasFlag(choice.needFlag))
                     continue;
             }
             // for world choice with empty text
@@ -189,7 +188,7 @@ public class DialogueController : MonoBehaviour
 
         if (!string.IsNullOrEmpty(choice.setFlag))
         {
-            storyState.SetFlag(choice.setFlag);
+            StoryState.instance.SetFlag(choice.setFlag);
         }
 
         if (choice.onChosen != null)

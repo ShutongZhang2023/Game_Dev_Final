@@ -1,11 +1,15 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class StoryState : MonoBehaviour
 {
     public List<string> currentFlags = new List<string>();
     public List<string> persistedFlags = new List<string>();
+
     public static StoryState instance;
+    public static UnityAction<string> onFlagUpdated;
 
     private void Awake()
     {
@@ -31,6 +35,8 @@ public class StoryState : MonoBehaviour
         {
             persistedFlags.Add(flagName);
         }
+
+        onFlagUpdated.Invoke(flagName);
     }
 
     public bool HasFlag(string flagName)
