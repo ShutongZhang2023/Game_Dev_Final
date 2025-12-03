@@ -1197,7 +1197,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueAsset: {fileID: 11400000, guid: 2b96edc21161009408d13b6a17e14db4, type: 2}
   startNodeId: start
-  storyState: {fileID: 0}
   contentText: {fileID: 74516212}
   choicesContainer: {fileID: 725028337}
   choiceButtonPrefab: {fileID: 5619145446823487526, guid: 933f0e46821096544b4022e2764a730c, type: 3}
