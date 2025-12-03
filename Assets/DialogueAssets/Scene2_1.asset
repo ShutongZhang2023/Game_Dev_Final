@@ -1,0 +1,95 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Scene2_1
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueAsset
+  nodes:
+  - id: start
+    nodeType: 0
+    speaker: narrator
+    content: "I know it\u2019s not right to sneak into her dorm."
+    choices: []
+    defaultNextNodeId: start_2
+  - id: start_2
+    nodeType: 0
+    speaker: narrator
+    content: But I have to do this.
+    choices: []
+    defaultNextNodeId: start_3
+  - id: start_3
+    nodeType: 0
+    speaker: narrator
+    content: I have to find out why she left me.
+    choices: []
+    defaultNextNodeId: 
+  - id: dorm_choice
+    nodeType: 0
+    speaker: narrator
+    content: 
+    choices:
+    - choiceId: bed
+      text: 
+      needFlag: 
+      nextNodeId: bed_line
+      setFlag: 
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    - choiceId: desk
+      text: 
+      needFlag: 
+      nextNodeId: desk_line
+      setFlag: 
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    - choiceId: trash
+      text: 
+      needFlag: 
+      nextNodeId: trash_line
+      setFlag: 
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    - choiceId: curtain
+      text: 
+      needFlag: 
+      nextNodeId: curtain_line
+      setFlag: 
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    defaultNextNodeId: 
+  - id: bed_line
+    nodeType: 0
+    speaker: narrator
+    content: We bought this blanket together on our second date.
+    choices: []
+    defaultNextNodeId: dorm_choice
+  - id: trash_line
+    nodeType: 0
+    speaker: narrator
+    content: Has she been pushing herself too hard lately?
+    choices: []
+    defaultNextNodeId: dorm_choice
+  - id: desk_line
+    nodeType: 0
+    speaker: narrator
+    content: "If only he would ask me how my day was\u2026 even just once."
+    choices: []
+    defaultNextNodeId: dorm_choice
+  - id: curtain_line
+    nodeType: 0
+    speaker: narrator
+    content: "She must feel really lonely\u2026"
+    choices: []
+    defaultNextNodeId: dorm_choice
