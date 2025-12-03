@@ -336,7 +336,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 197402542}
-        m_TargetAssemblyTypeName: DormWorldClick, Assembly-CSharp
+        m_TargetAssemblyTypeName: DormObjectClickWithZoom, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -394,14 +394,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 197402537}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a299543558f7e7e4eb2db25bb04fa75f, type: 3}
+  m_Script: {fileID: 11500000, guid: b09c36800a535ec48b342135a6f65c1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  choiceId: bed
   dialogueController: {fileID: 766380404}
+  dialogueAsset: {fileID: 11400000, guid: d184e0046f77d4b48b627ea49e763cc0, type: 2}
+  nodeId: bed_line
   zoomPanel: {fileID: 996794323}
   zoomImage: {fileID: 1356743709}
-  zoomSprite: {fileID: 0}
+  zoomSprite: {fileID: -8778797927910633707, guid: 54846dc3b4a733341971afe82af2b8db, type: 3}
   windClip: {fileID: 0}
   windVolume: 0.8
 --- !u!1 &594041275
@@ -981,6 +982,56 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &929918459
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 929918461}
+  - component: {fileID: 929918460}
+  m_Layer: 0
+  m_Name: DormUIManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &929918460
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929918459}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6257ce1cc9cd0c4bb57f814372242d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueControllerObject: {fileID: 766380403}
+  buttons:
+  - {fileID: 197402537}
+  - {fileID: 1201353955}
+  - {fileID: 1874608308}
+  - {fileID: 2068629511}
+--- !u!4 &929918461
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 929918459}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 960, y: 540, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &996794323
 GameObject:
   m_ObjectHideFlags: 0
@@ -1507,7 +1558,7 @@ GameObject:
   - component: {fileID: 1201353960}
   - component: {fileID: 1201353959}
   - component: {fileID: 1201353958}
-  - component: {fileID: 1201353957}
+  - component: {fileID: 1201353961}
   m_Layer: 5
   m_Name: Button_Trash
   m_TagString: Untagged
@@ -1535,25 +1586,6 @@ RectTransform:
   m_AnchoredPosition: {x: -564, y: -358}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1201353957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1201353955}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a299543558f7e7e4eb2db25bb04fa75f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  choiceId: trash
-  dialogueController: {fileID: 766380404}
-  zoomPanel: {fileID: 996794323}
-  zoomImage: {fileID: 1356743709}
-  zoomSprite: {fileID: 0}
-  windClip: {fileID: 0}
-  windVolume: 0.8
 --- !u!114 &1201353958
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1598,8 +1630,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1201353957}
-        m_TargetAssemblyTypeName: DormWorldClick, Assembly-CSharp
+      - m_Target: {fileID: 1201353961}
+        m_TargetAssemblyTypeName: DormObjectClickWithZoom, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -1648,6 +1680,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1201353955}
   m_CullTransparentMesh: 1
+--- !u!114 &1201353961
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1201353955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09c36800a535ec48b342135a6f65c1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueController: {fileID: 766380404}
+  dialogueAsset: {fileID: 11400000, guid: d184e0046f77d4b48b627ea49e763cc0, type: 2}
+  nodeId: trash_line
+  zoomPanel: {fileID: 996794323}
+  zoomImage: {fileID: 1356743709}
+  zoomSprite: {fileID: 2014030580848665785, guid: a46f89dfd5043b242846f77fc0311f1f, type: 3}
+  windClip: {fileID: 0}
+  windVolume: 0.8
 --- !u!1 &1269814667
 GameObject:
   m_ObjectHideFlags: 0
@@ -1819,7 +1871,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 350, y: 350}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1356743709
 MonoBehaviour:
@@ -2143,7 +2195,7 @@ GameObject:
   - component: {fileID: 1874608313}
   - component: {fileID: 1874608312}
   - component: {fileID: 1874608311}
-  - component: {fileID: 1874608310}
+  - component: {fileID: 1874608314}
   m_Layer: 5
   m_Name: Button_Desk
   m_TagString: Untagged
@@ -2171,25 +2223,6 @@ RectTransform:
   m_AnchoredPosition: {x: -355, y: -17}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1874608310
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1874608308}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a299543558f7e7e4eb2db25bb04fa75f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  choiceId: desk
-  dialogueController: {fileID: 766380404}
-  zoomPanel: {fileID: 996794323}
-  zoomImage: {fileID: 1356743709}
-  zoomSprite: {fileID: 0}
-  windClip: {fileID: 0}
-  windVolume: 0.8
 --- !u!114 &1874608311
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2234,8 +2267,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1874608310}
-        m_TargetAssemblyTypeName: DormWorldClick, Assembly-CSharp
+      - m_Target: {fileID: 1874608314}
+        m_TargetAssemblyTypeName: DormObjectClickWithZoom, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -2284,6 +2317,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1874608308}
   m_CullTransparentMesh: 1
+--- !u!114 &1874608314
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1874608308}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09c36800a535ec48b342135a6f65c1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueController: {fileID: 766380404}
+  dialogueAsset: {fileID: 11400000, guid: d184e0046f77d4b48b627ea49e763cc0, type: 2}
+  nodeId: desk_line
+  zoomPanel: {fileID: 996794323}
+  zoomImage: {fileID: 1356743709}
+  zoomSprite: {fileID: -724577309806451824, guid: b31a36d49d25b3c4a85192925472f505, type: 3}
+  windClip: {fileID: 0}
+  windVolume: 0.8
 --- !u!1 &2068629511
 GameObject:
   m_ObjectHideFlags: 0
@@ -2296,7 +2349,7 @@ GameObject:
   - component: {fileID: 2068629516}
   - component: {fileID: 2068629515}
   - component: {fileID: 2068629514}
-  - component: {fileID: 2068629513}
+  - component: {fileID: 2068629517}
   m_Layer: 5
   m_Name: Button_Curtain
   m_TagString: Untagged
@@ -2324,25 +2377,6 @@ RectTransform:
   m_AnchoredPosition: {x: 135, y: 302}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2068629513
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2068629511}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a299543558f7e7e4eb2db25bb04fa75f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  choiceId: curtain
-  dialogueController: {fileID: 766380404}
-  zoomPanel: {fileID: 996794323}
-  zoomImage: {fileID: 1356743709}
-  zoomSprite: {fileID: 0}
-  windClip: {fileID: 8300000, guid: ed78b35545289ba479af3ab657d77643, type: 3}
-  windVolume: 0.8
 --- !u!114 &2068629514
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2387,8 +2421,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2068629513}
-        m_TargetAssemblyTypeName: DormWorldClick, Assembly-CSharp
+      - m_Target: {fileID: 2068629517}
+        m_TargetAssemblyTypeName: DormObjectClickWithZoom, Assembly-CSharp
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -2437,6 +2471,26 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2068629511}
   m_CullTransparentMesh: 1
+--- !u!114 &2068629517
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2068629511}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b09c36800a535ec48b342135a6f65c1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueController: {fileID: 766380404}
+  dialogueAsset: {fileID: 11400000, guid: d184e0046f77d4b48b627ea49e763cc0, type: 2}
+  nodeId: curtain_line
+  zoomPanel: {fileID: 996794323}
+  zoomImage: {fileID: 1356743709}
+  zoomSprite: {fileID: 8306512584994251192, guid: a942d5b25ce1ebb48996ab682c376ca6, type: 3}
+  windClip: {fileID: 8300000, guid: ed78b35545289ba479af3ab657d77643, type: 3}
+  windVolume: 0.8
 --- !u!1 &2128964575
 GameObject:
   m_ObjectHideFlags: 0
@@ -2522,3 +2576,4 @@ SceneRoots:
   - {fileID: 705071478}
   - {fileID: 1168462471}
   - {fileID: 766380408}
+  - {fileID: 929918461}

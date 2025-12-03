@@ -74,22 +74,22 @@ MonoBehaviour:
     speaker: narrator
     content: We bought this blanket together on our second date.
     choices: []
-    defaultNextNodeId: dorm_choice
+    defaultNextNodeId: 
   - id: trash_line
-    nodeType: 0
-    speaker: narrator
-    content: Has she been pushing herself too hard lately?
-    choices: []
-    defaultNextNodeId: dorm_choice
-  - id: desk_line
     nodeType: 0
     speaker: narrator
     content: "If only he would ask me how my day was\u2026 even just once."
     choices: []
-    defaultNextNodeId: dorm_choice
+    defaultNextNodeId: 
+  - id: desk_line
+    nodeType: 0
+    speaker: narrator
+    content: Has she been pushing herself too hard lately?
+    choices: []
+    defaultNextNodeId: 
   - id: curtain_line
     nodeType: 0
     speaker: narrator
     content: "She must feel really lonely\u2026"
     choices: []
-    defaultNextNodeId: dorm_choice
+    defaultNextNodeId: 
