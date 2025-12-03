@@ -39,6 +39,7 @@ public class SceneManager : MonoBehaviour
             {
                 yield return UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(scene);
                 UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(newSceneName, LoadSceneMode.Additive);
+                StoryState.instance.SetFlag(newSceneName);
                 break;
             }
         }

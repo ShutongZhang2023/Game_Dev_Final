@@ -1,0 +1,119 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 0}
+  m_Name: Scene1
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueAsset
+  nodes:
+  - id: start
+    nodeType: 0
+    speaker: Narrator
+    content: We broke up.
+    choices: []
+    defaultNextNodeId: 1
+  - id: 1
+    nodeType: 0
+    speaker: Narrator
+    content: She said she was tired, that she no longer understood what I was thinking.
+    choices: []
+    defaultNextNodeId: 2
+  - id: 2
+    nodeType: 0
+    speaker: Narrator
+    content: I never really understood what she was holding on to, nor why she suddenly
+      became so sensitive.
+    choices: []
+    defaultNextNodeId: 3
+  - id: 3
+    nodeType: 0
+    speaker: Narrator
+    content: I never really understood what she was holding on to, nor why she suddenly
+      became so sensitive.
+    choices: []
+    defaultNextNodeId: 4
+  - id: 4
+    nodeType: 0
+    speaker: Narrator
+    content: "To be honest\u2026 I thought everything was fine."
+    choices: []
+    defaultNextNodeId: 5
+  - id: 5
+    nodeType: 0
+    speaker: Narrator
+    content: Why is she such an overthinker...
+    choices: []
+    defaultNextNodeId: 6
+  - id: 6
+    nodeType: 1
+    speaker: 
+    content: 
+    choices:
+    - choiceId: Scene1Choice1
+      text: "I just wanted to talk\u2026"
+      needFlag: 
+      nextNodeId: 7
+      setFlag: Scene1Choice1
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    - choiceId: Scene1Choice2
+      text: "I still have something I haven't said yet\u2026"
+      needFlag: 
+      nextNodeId: 8
+      setFlag: Scene1Choice2
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    defaultNextNodeId: 7
+  - id: 7
+    nodeType: 0
+    speaker: girl
+    content: "\u2026I don\u2019t want to explain this anymore."
+    choices:
+    - choiceId: Scene1Choice1
+      text: "I just wanted to talk\u2026"
+      needFlag: 
+      nextNodeId: 7
+      setFlag: Scene1Choice1
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    - choiceId: Scene1Choice2
+      text: "I still have something I haven't said yet\u2026"
+      needFlag: 
+      nextNodeId: 8
+      setFlag: Scene1Choice2
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    defaultNextNodeId: 
+  - id: 8
+    nodeType: 0
+    speaker: girl
+    content: "Saying that now doesn\u2019t change anything."
+    choices:
+    - choiceId: Scene1Choice1
+      text: "I just wanted to talk\u2026"
+      needFlag: 
+      nextNodeId: 7
+      setFlag: Scene1Choice1
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    - choiceId: Scene1Choice2
+      text: "I still have something I haven't said yet\u2026"
+      needFlag: 
+      nextNodeId: 8
+      setFlag: Scene1Choice2
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    defaultNextNodeId: 

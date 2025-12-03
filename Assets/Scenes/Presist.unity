@@ -1398,7 +1398,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &602589978
 RectTransform:
@@ -2620,6 +2620,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentFlags: []
   persistedFlags: []
+  totalAffection: 0
+  activeTimeline: 0
 --- !u!4 &921526935
 Transform:
   m_ObjectHideFlags: 0
@@ -2778,7 +2780,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1063743924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2840,7 +2842,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 2
   m_TargetDisplay: 0
 --- !u!224 &1063743927
 RectTransform:
@@ -4165,6 +4167,7 @@ GameObject:
   - component: {fileID: 1725101766}
   - component: {fileID: 1725101765}
   - component: {fileID: 1725101769}
+  - component: {fileID: 1725101770}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -4307,6 +4310,22 @@ MonoBehaviour:
   blendDistance: 0
   weight: 1
   sharedProfile: {fileID: 11400000, guid: f19e6bb91e343cc4c94e1b5dde251121, type: 2}
+--- !u!114 &1725101770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1725101764}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56666c5a40171f54783dd416a44f42bf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_EventMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_MaxRayIntersections: 0
 --- !u!1001 &1765163137
 PrefabInstance:
   m_ObjectHideFlags: 0

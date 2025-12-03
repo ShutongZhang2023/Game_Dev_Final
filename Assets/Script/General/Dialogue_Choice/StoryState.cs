@@ -5,8 +5,16 @@ using UnityEngine.Events;
 
 public class StoryState : MonoBehaviour
 {
+    [Header("Flags")]
     public List<string> currentFlags = new List<string>();
     public List<string> persistedFlags = new List<string>();
+
+    [Header("Affection System")]
+    public Dictionary<string, int> sceneAffection = new Dictionary<string, int>();
+    public int totalAffection = 0;
+
+    [Header("ExtraFlag")]
+    public bool activeTimeline = false;
 
     public static StoryState instance;
     public static UnityAction<string> onFlagUpdated;
@@ -36,7 +44,7 @@ public class StoryState : MonoBehaviour
             persistedFlags.Add(flagName);
         }
 
-        onFlagUpdated.Invoke(flagName);
+        onFlagUpdated?.Invoke(flagName);
     }
 
     public bool HasFlag(string flagName)
@@ -58,6 +66,8 @@ public class StoryState : MonoBehaviour
         {
             currentFlags.RemoveRange(indexToRemove, countToRemove);
         }
+
+        CleanSceneAffection();
     }
 
     public void ResetCurrentFlags()
@@ -65,4 +75,41 @@ public class StoryState : MonoBehaviour
         currentFlags.Clear();
     }
 
+    public void SetSceneAffection(string sceneKey, int delta)
+    {
+        sceneAffection[sceneKey] = delta;
+        RecalculateTotalAffection();
+    }
+
+    public void RecalculateTotalAffection()
+    {
+        int sum = 0;
+        foreach (string key in currentFlags)
+        {
+            if (sceneAffection.TryGetValue(key, out int value))
+                sum += value;
+        }
+
+        totalAffection = sum;
+    }
+
+    public void CleanSceneAffection()
+    {
+        List<string> keysToRemove = new List<string>();
+
+        foreach (var key in sceneAffection.Keys)
+        {
+            if (!currentFlags.Contains(key))
+            {
+                keysToRemove.Add(key);
+            }
+        }
+
+        foreach (var key in keysToRemove)
+        {
+            sceneAffection.Remove(key);
+        }
+        
+        RecalculateTotalAffection();
+    }
 }
