@@ -69,8 +69,8 @@ MonoBehaviour:
     y: 0
     width: 488
     height: 920
-  m_MinSize: {x: 275, y: 50}
-  m_MaxSize: {x: 4000, y: 4000}
+  m_MinSize: {x: 276, y: 76}
+  m_MaxSize: {x: 4001, y: 4026}
   m_ActualView: {fileID: 14}
   m_Panes:
   - {fileID: 14}
@@ -1811,9 +1811,9 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 571.3334
+    y: 516.6666
     width: 1217.6666
-    height: 401.33334
+    height: 401.33337
   m_SerializedDataModeController:
     m_DataMode: 0
     m_PreferredDataMode: 0
@@ -1855,7 +1855,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 60}
     m_SelectedIDs: fab60000
     m_LastClickedID: 46842
-    m_ExpandedIDs: 0000000088b600008ab600008cb600008eb6000000ca9a3bffffff7f
+    m_ExpandedIDs: 000000000cb700000eb7000010b7000012b70000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1884,7 +1884,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 0000000088b600008ab600008cb600008eb60000
+    m_ExpandedIDs: 000000000cb700000eb7000010b7000012b70000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -1963,8 +1963,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Inspector\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 1218.6667
-    y: 78.66667
+    x: 1219.6666
+    y: 24
     width: 487
     height: 894
   m_SerializedDataModeController:
@@ -2013,7 +2013,7 @@ MonoBehaviour:
   m_Pos:
     serializedVersion: 2
     x: 0
-    y: 78.66667
+    y: 24
     width: 241.66667
     height: 466.66666
   m_SerializedDataModeController:
@@ -2030,8 +2030,8 @@ MonoBehaviour:
   m_SceneHierarchy:
     m_TreeViewState:
       scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 08b60000
-      m_LastClickedID: 46600
+      m_SelectedIDs: 
+      m_LastClickedID: 0
       m_ExpandedIDs: 06fbffff08fbffff0afbfffff4ffffff68f70000dcf70000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
@@ -2078,8 +2078,8 @@ MonoBehaviour:
     m_TextWithWhitespace: "Scene\u200B"
   m_Pos:
     serializedVersion: 2
-    x: 242.66667
-    y: 78.66667
+    x: 243.66667
+    y: 24
     width: 973.99994
     height: 466.66666
   m_SerializedDataModeController:
@@ -2832,7 +2832,7 @@ MonoBehaviour:
       height: 720
     m_MinimalGUI: 1
   m_defaultScale: 0.6189815
-  m_LastWindowPixelSize: {x: 1460.9999, y: 700}
+  m_LastWindowPixelSize: {x: 973.99994, y: 466.66666}
   m_ClearInEditMode: 1
   m_NoCameraWarning: 1
   m_LowResolutionForAspectRatios: 01000000000000000000

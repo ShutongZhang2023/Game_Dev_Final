@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using System.Collections;
+using DG.Tweening;
 
 public class SceneManager : MonoBehaviour
 {
@@ -32,14 +33,17 @@ public class SceneManager : MonoBehaviour
 
     private IEnumerator LoadNewSceneAsync(string newSceneName)
     {
+        yield return ScreenFader.instance.FadeIn().WaitForCompletion();
+
         for (int i = 0; i < UnityEngine.SceneManagement.SceneManager.sceneCount; i++)
         {
             Scene scene = UnityEngine.SceneManagement.SceneManager.GetSceneAt(i);
-            if (scene.isLoaded && scene.name != persistentSceneName && scene.name != newSceneName)
+            if (scene.isLoaded && scene.name != persistentSceneName)
             {
                 yield return UnityEngine.SceneManagement.SceneManager.UnloadSceneAsync(scene);
-                UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(newSceneName, LoadSceneMode.Additive);
+                yield return UnityEngine.SceneManagement.SceneManager.LoadSceneAsync(newSceneName, LoadSceneMode.Additive);
                 StoryState.instance.SetFlag(newSceneName);
+                yield return ScreenFader.instance.FadeOut().WaitForCompletion();
                 break;
             }
         }

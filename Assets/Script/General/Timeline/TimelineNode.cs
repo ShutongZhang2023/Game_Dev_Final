@@ -57,6 +57,7 @@ public class TimelineNode : MonoBehaviour
         Debug.Log("Loading scene: " + connectedSceneName);
         SceneManager.instance.ChangeContentScene(connectedSceneName);
         StoryState.instance.ClearFromFlag(requiredFlag);
+        CanvasLoad.instance.ToggleCanvas();
     }
 
 }

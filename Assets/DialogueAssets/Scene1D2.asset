@@ -31,7 +31,7 @@ MonoBehaviour:
     content: 
     choices:
     - choiceId: Scene1Choice1
-      text: 
+      text: "I just wanted to talk\u2026"
       needFlag: 
       nextNodeId: 3
       setFlag: Scene1Choice1
@@ -39,7 +39,7 @@ MonoBehaviour:
         m_PersistentCalls:
           m_Calls: []
     - choiceId: Scene1Choice2
-      text: 
+      text: "I still have something I haven't said yet\u2026"
       needFlag: 
       nextNodeId: 4
       setFlag: Scene1Choice2

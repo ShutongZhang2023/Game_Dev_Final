@@ -67,7 +67,7 @@ public class StoryState : MonoBehaviour
             currentFlags.RemoveRange(indexToRemove, countToRemove);
         }
 
-        CleanSceneAffection();
+        CleanSceneAffection(flagName);
     }
 
     public void ResetCurrentFlags()
@@ -93,7 +93,7 @@ public class StoryState : MonoBehaviour
         totalAffection = sum;
     }
 
-    public void CleanSceneAffection()
+    public void CleanSceneAffection(string thisScene)
     {
         List<string> keysToRemove = new List<string>();
 
@@ -103,6 +103,11 @@ public class StoryState : MonoBehaviour
             {
                 keysToRemove.Add(key);
             }
+        }
+
+        if (!keysToRemove.Contains(thisScene))
+        {
+            keysToRemove.Add(thisScene);
         }
 
         foreach (var key in keysToRemove)

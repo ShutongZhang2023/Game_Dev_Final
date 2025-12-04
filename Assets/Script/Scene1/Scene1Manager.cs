@@ -52,12 +52,19 @@ public class Scene1Manager : MonoBehaviour
             character.SetActive(false);
         });
 
-        if (!StoryState.instance.activeTimeline) {
+        if (!StoryState.instance.activeTimeline)
+        {
             // Show the notebook with fade-in effect
             notebook.SetActive(true);
             SpriteRenderer sr = notebook.GetComponent<SpriteRenderer>();
             sr.color = new Color(sr.color.r, sr.color.g, sr.color.b, 0);
             sr.DOFade(1f, 1f).SetEase(Ease.OutQuad);
+        }
+        else { 
+            if (StoryState.instance.HasFlag("Scene1Choice3"))
+                SceneManager.instance.ChangeContentScene("Scene2-2");
+            else
+                SceneManager.instance.ChangeContentScene("Scene2-1");
         }
     }
 }
