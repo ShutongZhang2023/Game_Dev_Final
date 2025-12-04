@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: a942d5b25ce1ebb48996ab682c376ca6
+guid: e6320cdfd1ed8ac4db6b0d51ab25e7ff
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 8306512584994251192
-    second: "\u5C4F\u5E55\u622A\u56FE 2025-12-03 054703_0"
+      213: -9137117592129561275
+    second: DOTweenIcon_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u5C4F\u5E55\u622A\u56FE 2025-12-03 054703_0"
+      name: DOTweenIcon_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 447
-        height: 381
+        x: 1
+        y: 1
+        width: 91
+        height: 16
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 8b1e4eeaf29a64370800000000000000
-      internalID: 8306512584994251192
+      spriteID: 54d1522e5ff623180800000000000000
+      internalID: -9137117592129561275
       vertices: []
       indices: 
       edges: []
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\u5C4F\u5E55\u622A\u56FE 2025-12-03 054703_0": 8306512584994251192
+      DOTweenIcon_0: -9137117592129561275
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

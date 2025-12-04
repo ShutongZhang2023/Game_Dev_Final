@@ -3,6 +3,7 @@ using UnityEngine.UI;
 using System.Collections;
 using TMPro;
 using UnityEngine.SceneManagement;
+using UnityEngine.Events;
 
 
 public class DialogueController : MonoBehaviour
@@ -23,6 +24,8 @@ public class DialogueController : MonoBehaviour
     private Coroutine typingCoroutine;
     private bool textFinished;
     private bool waitingForChoice;
+
+    public UnityAction onDialogueEnd;
 
     private void Start()
     {
@@ -78,6 +81,7 @@ public class DialogueController : MonoBehaviour
     }
 
     private void EndDialogue() {
+        onDialogueEnd?.Invoke();
         gameObject.SetActive(false);
     }
 
@@ -162,7 +166,7 @@ public class DialogueController : MonoBehaviour
             //check needFlag
             if (!string.IsNullOrEmpty(choice.needFlag))
             {
-                if (!StoryState.instance.HasFlag(choice.needFlag))
+                if (!StoryState.instance.HasPersistedFlag(choice.needFlag))
                     continue;
             }
             // for world choice with empty text

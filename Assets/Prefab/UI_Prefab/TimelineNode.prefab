@@ -261,7 +261,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isSceneNode: 1
+  button: {fileID: 2907509255218167729}
   connectedSceneName: Scene1
+  isCurrentNode: 0
   requiredFlag: Scene1
   childNodes: []
   uiRect: {fileID: 4732538432664503800}

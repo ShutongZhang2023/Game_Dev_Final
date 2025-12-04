@@ -45,6 +45,13 @@ public class DialogueAsset : ScriptableObject
 {
     public DialogueNode[] nodes;
 
+    private void OnEnable()
+    {
+        if (nodes == null || nodes.Length == 0)
+        {
+            Debug.LogWarning("[DialogueAsset] nodes is empty or null when loaded: " + name);
+        }
+    }
     public DialogueNode GetNodeById(string id)
     {
         foreach (var node in nodes)

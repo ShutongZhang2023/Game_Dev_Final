@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b31a36d49d25b3c4a85192925472f505
+guid: 95a0797c981ede44bb0587b1e6a521da
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -724577309806451824
-    second: "\u5C4F\u5E55\u622A\u56FE 2025-12-03 055029_0"
+      213: -4005909923191444118
+    second: stack-colorful-books-ready-reading-learning_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -37,7 +37,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -46,7 +46,7 @@ TextureImporter:
   nPOTScale: 0
   lightmap: 0
   compressionQuality: 50
-  spriteMode: 2
+  spriteMode: 1
   spriteExtrude: 1
   spriteMeshType: 1
   alignment: 0
@@ -100,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\u5C4F\u5E55\u622A\u56FE 2025-12-03 055029_0"
+      name: stack-colorful-books-ready-reading-learning_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 461
-        height: 327
+        x: 309
+        y: 317
+        width: 1443
+        height: 1228
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -115,8 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 093ada496c8c1f5f0800000000000000
-      internalID: -724577309806451824
+      spriteID: a6d26f926262868c0800000000000000
+      internalID: -4005909923191444118
       vertices: []
       indices: 
       edges: []
@@ -125,7 +125,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 5e97eb03825dee720800000000000000
     internalID: 0
     vertices: []
     indices: 
@@ -135,7 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      "\u5C4F\u5E55\u622A\u56FE 2025-12-03 055029_0": -724577309806451824
+      stack-colorful-books-ready-reading-learning_0: -4005909923191444118
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

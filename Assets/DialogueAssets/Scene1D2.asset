@@ -1,0 +1,93 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6977f3f826e876c49a1435cb4e36350f, type: 3}
+  m_Name: Scene1D2
+  m_EditorClassIdentifier: Assembly-CSharp::DialogueAsset
+  nodes:
+  - id: start
+    nodeType: 0
+    speaker: boy
+    content: "\u2026I\u2019m back here again."
+    choices: []
+    defaultNextNodeId: 1
+  - id: 1
+    nodeType: 0
+    speaker: boy
+    content: This time, I have to try saying something different.
+    choices: []
+    defaultNextNodeId: 2
+  - id: 2
+    nodeType: 1
+    speaker: 
+    content: 
+    choices:
+    - choiceId: Scene1Choice1
+      text: "I just wanted to talk\u2026"
+      needFlag: 
+      nextNodeId: 3
+      setFlag: Scene1Choice1
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    - choiceId: Scene1Choice2
+      text: "I still have something I haven't said yet\u2026"
+      needFlag: 
+      nextNodeId: 4
+      setFlag: Scene1Choice2
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    - choiceId: Scene1Choice3
+      text: How are you today? I remember you moved classrooms, right?
+      needFlag: 
+      nextNodeId: 5
+      setFlag: Scene1Choice3
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    defaultNextNodeId: 
+  - id: 3
+    nodeType: 0
+    speaker: girl
+    content: "\u2026I don\u2019t want to explain this anymore."
+    choices: []
+    defaultNextNodeId: 
+  - id: 4
+    nodeType: 0
+    speaker: girl
+    content: "I still have something I haven't said yet\u2026"
+    choices: []
+    defaultNextNodeId: 
+  - id: 5
+    nodeType: 0
+    speaker: girl
+    content: "\u2026How did you know that?"
+    choices: []
+    defaultNextNodeId: 6
+  - id: 6
+    nodeType: 0
+    speaker: girl
+    content: Never mind. What did you want to talk about?
+    choices: []
+    defaultNextNodeId: 7
+  - id: 7
+    nodeType: 0
+    speaker: girl
+    content: "If there\u2019s nothing else, I\u2019ll get going."
+    choices: []
+    defaultNextNodeId: 8
+  - id: 8
+    nodeType: 0
+    speaker: boy
+    content: "\u2026The diary didn\u2019t fall this time."
+    choices: []
+    defaultNextNodeId: 
