@@ -3,7 +3,7 @@ using DG.Tweening;
 
 public class Notebook : Clickable
 {
-    private void Awake()
+    protected override void Awake()
     {
         base.Awake();
     }

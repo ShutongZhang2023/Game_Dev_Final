@@ -11,7 +11,7 @@ public class Scene1Manager : MonoBehaviour
         StoryState.onFlagUpdated += ChoiceSelected;
         character.SetActive(true);
         notebook.SetActive(false);
-        if (!StoryState.instance.activeTimeline)
+        if (!StoryState.instance.passRound1)
         {
             d1.SetActive(true);
             d1.GetComponent<DialogueController>().onDialogueEnd += EndConversation;
@@ -52,7 +52,7 @@ public class Scene1Manager : MonoBehaviour
             character.SetActive(false);
         });
 
-        if (!StoryState.instance.activeTimeline)
+        if (!StoryState.instance.passRound1)
         {
             // Show the notebook with fade-in effect
             notebook.SetActive(true);

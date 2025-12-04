@@ -26,6 +26,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Scene2-2.unity
     guid: e69dfbfa50fb692408e1485afe628a15
+  - enabled: 1
+    path: Assets/Scenes/BadEnd.unity
+    guid: caa3b7227d47ebd46ac1ccf456bf10dc
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

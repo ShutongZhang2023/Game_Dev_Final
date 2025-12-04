@@ -15,6 +15,7 @@ public class StoryState : MonoBehaviour
 
     [Header("ExtraFlag")]
     public bool activeTimeline = false;
+    public bool passRound1 = false;
 
     public static StoryState instance;
     public static UnityAction<string> onFlagUpdated;

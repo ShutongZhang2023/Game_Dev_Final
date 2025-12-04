@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6977f3f826e876c49a1435cb4e36350f, type: 3}
-  m_Name: Scene2-1-Desk
+  m_Name: Scene2-1-End
   m_EditorClassIdentifier: Assembly-CSharp::DialogueAsset
   nodes:
   - id: start
     nodeType: 0
-    speaker: Narrator
-    content: Has she been pushing herself too hard lately?
+    speaker: narrator
+    content: "\u88AB\u6293\u5305\u4E86\uFF01"
     choices: []
     defaultNextNodeId: 
