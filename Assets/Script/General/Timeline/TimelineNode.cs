@@ -9,6 +9,7 @@ public class TimelineNode : MonoBehaviour
     public bool isSceneNode = false;          // Can player click to change scene
     public string connectedSceneName;         // Target scene if clickable
     public bool isCurrentNode = false;        // Is this the current active node
+    private bool clickable = false;
 
     [Header("Visibility Flag")]
     public string requiredFlag;               // Node will show only if this flag is set
@@ -43,10 +44,12 @@ public class TimelineNode : MonoBehaviour
         if (isCurrentNode)
         {
             nodeImage.color = currentColor;
+            clickable = true;
         }
         else
         {
             nodeImage.color = normalColor;
+            clickable = false;
         }
     }
 
@@ -55,6 +58,7 @@ public class TimelineNode : MonoBehaviour
     {
         if (!isSceneNode) return;
         Debug.Log("Loading scene: " + connectedSceneName);
+        if (!clickable) return;
         SceneManager.instance.ChangeContentScene(connectedSceneName);
         StoryState.instance.ClearFromFlag(requiredFlag);
         CanvasLoad.instance.ToggleCanvas();
