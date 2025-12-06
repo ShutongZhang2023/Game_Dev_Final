@@ -8,7 +8,7 @@ public class Scene3Script : MonoBehaviour
     public GameObject choicePanel, herChat1, myChat1, myChatObj, herChat2;
     public TextMeshProUGUI herChatText1, myChatText1, myChatText, herChatText2;
 
-    void Start()
+    void Awake()
     {
         StoryState.onFlagUpdated += ChoiceSelected;
         StartCoroutine(ShowMessagesCo());
@@ -18,6 +18,11 @@ public class Scene3Script : MonoBehaviour
     void Update()
     {
         
+    }
+
+    void OnDestroy()
+    {
+        StoryState.onFlagUpdated -= ChoiceSelected;
     }
 
     IEnumerator ShowMessagesCo()
@@ -51,20 +56,25 @@ public class Scene3Script : MonoBehaviour
 
     public void ChoiceSelected(string flagName)
     {
+        if (!flagName.Contains("Choice")) return;
+
         Debug.Log("Flag selected: " + flagName);
 
         string text = "?";
         if (flagName.Equals("Scene3Choice1"))
         {
             text = "She's so sensitive...";
+            StoryState.instance.SetSceneAffection("Scene3", -2);
         }
         else if (flagName.Equals("Scene3Choice2"))
         {
             text = "Maybe I was just not feeling it on that day...";
+            StoryState.instance.SetSceneAffection("Scene3", 0);
         } 
         else if (flagName.Equals("Scene3Choice3"))
         {
             text = "I didn't even ask her feelings on that day.";
+            StoryState.instance.SetSceneAffection("Scene3", 2);
         }
 
         StartCoroutine(ShowReplyMessagesCo(text));
@@ -79,6 +89,9 @@ public class Scene3Script : MonoBehaviour
 
         herChat2.SetActive(true);
         yield return StartCoroutine(TypeTextCoroutine(herChatText2, "..."));
+
+        yield return new WaitForSeconds(2f);
+        SceneManager.instance.ChangeContentScene("Scene4");
     }
 
 }
