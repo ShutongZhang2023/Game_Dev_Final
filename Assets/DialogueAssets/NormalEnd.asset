@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6977f3f826e876c49a1435cb4e36350f, type: 3}
+  m_Name: NormalEnd
+  m_EditorClassIdentifier: 
+  nodes:
+  - id: start
+    nodeType: 0
+    speaker: narrator
+    content: "He didn\u2019t become the solution to the past, but at least he no
+      longer avoided it."
+    choices: []
+    defaultNextNodeId: 1
+  - id: 1
+    nodeType: 0
+    speaker: narrator
+    content: "He acknowledged what he felt that day\u2014his indifference and impatience."
+    choices: []
+    defaultNextNodeId: 2
+  - id: 2
+    nodeType: 0
+    speaker: narrator
+    content: He learned to pause, to listen through a full sentence instead of searching
+      for a way out.
+    choices: []
+    defaultNextNodeId: 3
+  - id: 3
+    nodeType: 0
+    speaker: narrator
+    content: At the school gate after class, he called out to her again.
+    choices: []
+    defaultNextNodeId: 4
+  - id: 4
+    nodeType: 0
+    speaker: narrator
+    content: "This time, she didn\u2019t step away or leave immediately\u2014she
+      simply turned her head and listened."
+    choices: []
+    defaultNextNodeId: 5
+  - id: 5
+    nodeType: 0
+    speaker: narrator
+    content: "They spoke as if meeting for the first time\u2014simple, unburdened."
+    choices: []
+    defaultNextNodeId: 6
+  - id: 6
+    nodeType: 0
+    speaker: narrator
+    content: No promises, no guarantees, no closure that must succeed.
+    choices: []
+    defaultNextNodeId: 7
+  - id: 7
+    nodeType: 0
+    speaker: narrator
+    content: 'Yet this conversation came closer to honesty than any they had before. '
+    choices: []
+    defaultNextNodeId: 8

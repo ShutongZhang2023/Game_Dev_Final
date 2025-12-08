@@ -35,6 +35,21 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/BadEnd.unity
     guid: caa3b7227d47ebd46ac1ccf456bf10dc
+  - enabled: 1
+    path: Assets/Scenes/Scene6.unity
+    guid: 3836ff5a4276e924b95e92d203a418c9
+  - enabled: 1
+    path: Assets/Scenes/GoodEnd.unity
+    guid: 0386836deec74b94799b3f606c82e571
+  - enabled: 1
+    path: Assets/Scenes/NormalEnd.unity
+    guid: 4bb226178bdd3ef4b9f416d821cbd8a5
+  - enabled: 1
+    path: Assets/Scenes/TrueEnd.unity
+    guid: 3be387287cde58f4d95210ac2df578df
+  - enabled: 1
+    path: Assets/Scenes/Scene7.unity
+    guid: 12b0aa4b4ec997b429061de919f073a0
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
   m_UseUCBPForAssetBundles: 0

@@ -37,11 +37,21 @@ public class Scene5Script : MonoBehaviour
             StoryState.instance.SetSceneAffection("Scene5", 3);
         }
 
-        if (StoryState.instance.totalAffection > 10)
+        if (StoryState.instance.totalAffection <= 1)
         {
-            // good ending + meta space
+            StoryState.instance.SetFlag("BadEnd2");
+            SceneManager.instance.ChangeContentScene("BadEnd");
+        }
+        else if(StoryState.instance.totalAffection <= 7)
+        {
+            SceneManager.instance.ChangeContentScene("NormalEnd");
+        }
+        else
+        {
+            SceneManager.instance.ChangeContentScene("GoodEnd");
         }
         //SceneManager.instance.ChangeContentScene("Scene5");
+        StoryState.instance.SetFlag("Resolution");
     }
 
 }
