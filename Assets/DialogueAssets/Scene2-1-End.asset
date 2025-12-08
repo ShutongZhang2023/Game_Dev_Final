@@ -16,6 +16,6 @@ MonoBehaviour:
   - id: start
     nodeType: 0
     speaker: narrator
-    content: "\u88AB\u6293\u5305\u4E86\uFF01"
+    content: She found me in her dorm!
     choices: []
     defaultNextNodeId: 

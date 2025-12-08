@@ -3,9 +3,12 @@ using UnityEngine;
 public class Scene5Script : MonoBehaviour
 {
 
+    public DialogueController dialogueController;
+
     void Awake()
     {
         StoryState.onFlagUpdated += ChoiceSelected;
+        dialogueController.onDialogueEnd += onDialogueEnd;
     }
 
     void Update()
@@ -36,13 +39,16 @@ public class Scene5Script : MonoBehaviour
         {
             StoryState.instance.SetSceneAffection("Scene5", 3);
         }
+    }
 
+    public void onDialogueEnd()
+    {
         if (StoryState.instance.totalAffection <= 1)
         {
             StoryState.instance.SetFlag("BadEnd2");
             SceneManager.instance.ChangeContentScene("BadEnd");
         }
-        else if(StoryState.instance.totalAffection <= 7)
+        else if (StoryState.instance.totalAffection <= 7)
         {
             SceneManager.instance.ChangeContentScene("NormalEnd");
         }
@@ -50,7 +56,6 @@ public class Scene5Script : MonoBehaviour
         {
             SceneManager.instance.ChangeContentScene("GoodEnd");
         }
-        //SceneManager.instance.ChangeContentScene("Scene5");
         StoryState.instance.SetFlag("Resolution");
     }
 
