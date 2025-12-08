@@ -36,7 +36,7 @@ MonoBehaviour:
           m_Calls: []
     - choiceId: 3
       text: She just want me to listen to her
-      needFlag: 
+      needFlag: ClueB
       nextNodeId: 
       setFlag: Scene4Choice3
       onChosen:
