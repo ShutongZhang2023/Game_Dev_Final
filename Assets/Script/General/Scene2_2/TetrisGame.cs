@@ -20,6 +20,19 @@ public class TetrisGame : MonoBehaviour
     float timer;
     int score;
 
+    Color currentColor;
+
+    Color[] shapeColors =
+{
+    Color.cyan,
+    new Color(0.6f, 0.3f, 0.9f),
+    Color.yellow,
+    Color.red,
+    Color.green,
+    new Color(1f, 0.5f, 0.1f),
+    Color.blue
+};
+
     void OnEnable()
     {
         grid = new Transform[width, height];
@@ -51,17 +64,21 @@ public class TetrisGame : MonoBehaviour
 
     void SpawnPiece()
     {
-        currentShape = TetrisData.Shapes[Random.Range(0, TetrisData.Shapes.Length)];
-        currentPos = new Vector2Int(width / 2 - 1, height - 1);
+        int index = Random.Range(0, TetrisData.Shapes.Length);
+        currentShape = TetrisData.Shapes[index];
+        currentColor = shapeColors[index];
+
+        currentPos = new Vector2Int(width / 2, height - 2);
         currentBlocks.Clear();
 
         foreach (var cell in currentShape)
         {
             GameObject b = Instantiate(blockPrefab, gridParent);
             Image img = b.GetComponent<Image>();
-            img.color = Random.ColorHSV();
+            img.color = currentColor;
             currentBlocks.Add(img);
         }
+
         UpdatePieceVisual();
     }
 
@@ -71,7 +88,7 @@ public class TetrisGame : MonoBehaviour
         {
             Vector2Int pos = currentPos + currentShape[i];
             currentBlocks[i].rectTransform.anchoredPosition =
-            new Vector2(pos.x * 32, pos.y * 32);
+                new Vector2(pos.x * 32, pos.y * 32);
         }
     }
 
@@ -163,5 +180,10 @@ public class TetrisGame : MonoBehaviour
     {
         foreach (Transform t in gridParent)
             Destroy(t.gameObject);
+    }
+
+    public void CloseGame()
+    {
+        gameObject.SetActive(false);
     }
 }
