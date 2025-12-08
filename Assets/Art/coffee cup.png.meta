@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 5d1151070041127409982f811bb260b7
+guid: f9ddd24552979dd45b6eb514a2828683
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 3146191777480040966
-    second: coffeecup_0
-  - first:
-      213: -546083567664751562
-    second: coffeecup_1
+      213: 7103135150254029313
+    second: coffee cup_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -103,13 +100,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: coffeecup_0
+      name: coffee cup_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 8
-        width: 1024
-        height: 1503
+        x: 11
+        y: 0
+        width: 1515
+        height: 1024
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -118,30 +115,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 602e3fb90c489ab20800000000000000
-      internalID: 3146191777480040966
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: coffeecup_1
-      rect:
-        serializedVersion: 2
-        x: 466
-        y: 755
-        width: 558
-        height: 777
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 63c1aa373ebeb68f0800000000000000
-      internalID: -546083567664751562
+      spriteID: 10a7b7ef8c7639260800000000000000
+      internalID: 7103135150254029313
       vertices: []
       indices: 
       edges: []
@@ -160,8 +135,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      coffeecup_0: 3146191777480040966
-      coffeecup_1: -546083567664751562
+      coffee cup_0: 7103135150254029313
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
