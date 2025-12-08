@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6977f3f826e876c49a1435cb4e36350f, type: 3}
-  m_Name: Scene4
+  m_Name: Scene5
   m_EditorClassIdentifier: Assembly-CSharp::DialogueAsset
   nodes:
   - id: start
@@ -19,26 +19,26 @@ MonoBehaviour:
     content: Please Choose
     choices:
     - choiceId: 1
-      text: She is talking too much...
+      text: You are just thinking too much.
       needFlag: 
       nextNodeId: 
-      setFlag: Scene4Choice1
+      setFlag: Scene5Choice1
       onChosen:
         m_PersistentCalls:
           m_Calls: []
     - choiceId: 2
-      text: I just want to get out of this situation...
+      text: Sorry, I'm not feeling good recently.
       needFlag: 
       nextNodeId: 
-      setFlag: Scene4Choice2
+      setFlag: Scene5Choice2
       onChosen:
         m_PersistentCalls:
           m_Calls: []
     - choiceId: 3
-      text: She just want me to listen to her
-      needFlag: ClueB
+      text: It was my fault for neglecting your feelings.
+      needFlag: 
       nextNodeId: 
-      setFlag: Scene4Choice3
+      setFlag: Scene5Choice3
       onChosen:
         m_PersistentCalls:
           m_Calls: []

@@ -36,7 +36,7 @@ MonoBehaviour:
           m_Calls: []
     - choiceId: 3
       text: I didn't even ask her feelings on that day.
-      needFlag: 
+      needFlag: ClueC
       nextNodeId: 
       setFlag: Scene3Choice3
       onChosen:
