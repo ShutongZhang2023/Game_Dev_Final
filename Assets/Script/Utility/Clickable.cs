@@ -17,6 +17,7 @@ public class Clickable : MonoBehaviour, IPointerEnterHandler, IPointerExitHandle
         var sr = GetComponent<SpriteRenderer>();
         materialInstance = sr.material;
         materialInstance.SetFloat(thicknessProperty, normalThickness);
+        materialInstance.SetTexture("_MainTex", sr.sprite.texture);
     }
 
     public void OnPointerEnter(PointerEventData eventData)
