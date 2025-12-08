@@ -14,6 +14,81 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueAsset
   nodes:
   - id: start
+    nodeType: 0
+    speaker: girl
+    content: I have to turn in the final report for that lab class next week, and
+      the professor said we might have to defend it on the spot.
+    choices: []
+    defaultNextNodeId: 1
+  - id: 1
+    nodeType: 0
+    speaker: girl
+    content: "I\u2019m actually kind of stressed about it\u2026 "
+    choices: []
+    defaultNextNodeId: 2
+  - id: 2
+    nodeType: 0
+    speaker: girl
+    content: Because during the mock session last time, I completely messed up.
+    choices: []
+    defaultNextNodeId: 3
+  - id: 3
+    nodeType: 1
+    speaker: 
+    content: 
+    choices:
+    - choiceId: Choice1
+      text: Mm.
+      needFlag: 
+      nextNodeId: 4
+      setFlag: 
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    defaultNextNodeId: 4
+  - id: 4
+    nodeType: 0
+    speaker: girl
+    content: "And the group presentation is also scheduled for the same week. Everyone
+      keeps pushing responsibilities around, and it feels like I\u2019ll end up organizing
+      all the materials by myself."
+    choices: []
+    defaultNextNodeId: 5
+  - id: 5
+    nodeType: 1
+    speaker: 
+    content: 
+    choices:
+    - choiceId: Choice2
+      text: Oh, okay.
+      needFlag: 
+      nextNodeId: 6
+      setFlag: 
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    defaultNextNodeId: 6
+  - id: 6
+    nodeType: 0
+    speaker: narrator
+    content: She pauses for one second.
+    choices: []
+    defaultNextNodeId: 7
+  - id: 7
+    nodeType: 0
+    speaker: girl
+    content: "I was thinking about practicing early yesterday, but I didn\u2019t
+      even know what I was doing wrong\u2026 so the more I thought about it, the
+      more anxious I got."
+    choices: []
+    defaultNextNodeId: 8
+  - id: 8
+    nodeType: 0
+    speaker: girl
+    content: Are you actually listening to me?
+    choices: []
+    defaultNextNodeId: 9
+  - id: 9
     nodeType: 1
     speaker: Narrator
     content: Please Choose
