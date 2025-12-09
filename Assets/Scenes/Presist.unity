@@ -5854,7 +5854,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   persistentSceneName: Presist
-  firstSceneName: Scene1
+  firstSceneName: Scene2-2
 --- !u!4 &2047328975
 Transform:
   m_ObjectHideFlags: 0
