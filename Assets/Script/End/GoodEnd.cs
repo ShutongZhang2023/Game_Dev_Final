@@ -1,11 +1,13 @@
 using UnityEngine;
 using TMPro;
 using DG.Tweening;
+using UnityEngine.UI;
 
 public class GoodEnd : MonoBehaviour
 {
     public GameObject Dialogue;
     public TextMeshProUGUI tmpText;
+    public Image backgroundImage;
 
     private void Start()
     {
@@ -16,6 +18,7 @@ public class GoodEnd : MonoBehaviour
 
     private void EndBadEnd()
     {
+        backgroundImage.DOFade(0f, 2f);
         tmpText.DOFade(1f, 3f).OnComplete(() =>
         {
             SceneManager.instance.ChangeContentScene("Scene6");
