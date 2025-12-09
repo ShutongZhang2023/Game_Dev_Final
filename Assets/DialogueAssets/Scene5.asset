@@ -14,6 +14,30 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::DialogueAsset
   nodes:
   - id: start
+    nodeType: 0
+    speaker: girl
+    content: "...You haven't said a word since we left the cafe."
+    choices: []
+    defaultNextNodeId: 1
+  - id: 1
+    nodeType: 0
+    speaker: girl
+    content: When I told you I was scared earlier... you just looked at me like a problem that needed fixing.
+    choices: []
+    defaultNextNodeId: 2
+  - id: 2
+    nodeType: 0
+    speaker: girl
+    content: "I don't need solutions. I just don't want to feel this alone when I'm standing right next to you."
+    choices: []
+    defaultNextNodeId: 3
+  - id: 3
+    nodeType: 0
+    speaker: girl
+    content: Tell me the truth. Is it just me? Am I being difficult?
+    choices: []
+    defaultNextNodeId: choice_node
+  - id: choice_node
     nodeType: 1
     speaker: Narrator
     content: Please Choose
@@ -21,7 +45,7 @@ MonoBehaviour:
     - choiceId: 1
       text: You are just thinking too much.
       needFlag: 
-      nextNodeId: 
+      nextNodeId: reaction_1
       setFlag: Scene5Choice1
       onChosen:
         m_PersistentCalls:
@@ -29,7 +53,7 @@ MonoBehaviour:
     - choiceId: 2
       text: Sorry, I'm not feeling good recently.
       needFlag: 
-      nextNodeId: 
+      nextNodeId: reaction_2
       setFlag: Scene5Choice2
       onChosen:
         m_PersistentCalls:
@@ -37,9 +61,45 @@ MonoBehaviour:
     - choiceId: 3
       text: It was my fault for neglecting your feelings.
       needFlag: 
-      nextNodeId: 
+      nextNodeId: reaction_3
       setFlag: Scene5Choice3
       onChosen:
         m_PersistentCalls:
           m_Calls: []
     defaultNextNodeId: 
+  - id: reaction_1
+    nodeType: 0
+    speaker: girl
+    content: "...I see. If that's what you think, then there's nothing left to say."
+    choices: []
+    defaultNextNodeId: end_bad
+  - id: reaction_2
+    nodeType: 0
+    speaker: girl
+    content: "(Sighs) Go home and rest then. We'll talk some other time."
+    choices: []
+    defaultNextNodeId: end_normal
+  - id: reaction_3
+    nodeType: 0
+    speaker: girl
+    content: "...You finally heard me. That's all I wanted."
+    choices: []
+    defaultNextNodeId: end_good
+  - id: end_bad
+    nodeType: 0
+    speaker: Narrator
+    content: She turns away and walks into the station alone.
+    choices: []
+    defaultNextNodeId: 
+  - id: end_normal
+    nodeType: 0
+    speaker: Narrator
+    content: She sounds disappointed, but she doesn't leave angry.
+    choices: []
+    defaultNextNodeId: 
+  - id: end_good
+    nodeType: 0
+    speaker: Narrator
+    content: The tension in her shoulders drops. She wipes her eyes and looks at me properly.
+    choices: []
+    defaultNextNodeId:
