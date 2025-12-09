@@ -4428,7 +4428,7 @@ GameObject:
   - component: {fileID: 1656802206}
   - component: {fileID: 1656802205}
   m_Layer: 0
-  m_Name: Button
+  m_Name: TimelineButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4452,7 +4452,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -820, y: 483}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 160, y: 40}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1656802205
 MonoBehaviour:
@@ -6083,6 +6083,22 @@ PrefabInstance:
       propertyPath: 'childNodes.Array.data[2]'
       value: 
       objectReference: {fileID: 921448951}
+    - target: {fileID: 2301060473761266479, guid: 34e107b5cdfc5e849be56e7c9d3e7429, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -6235157847851866190, guid: 4836f94874376384c80b3bce93d80939, type: 3}
+    - target: {fileID: 2301060473761266479, guid: 34e107b5cdfc5e849be56e7c9d3e7429, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2301060473761266479, guid: 34e107b5cdfc5e849be56e7c9d3e7429, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2301060473761266479, guid: 34e107b5cdfc5e849be56e7c9d3e7429, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2524116468962263636, guid: 34e107b5cdfc5e849be56e7c9d3e7429, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
