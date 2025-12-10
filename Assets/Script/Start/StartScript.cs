@@ -11,10 +11,17 @@ public class StartScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            UnityEngine.SceneManagement.SceneManager.LoadScene("Presist");
-        }
+
+    }
+
+    public void StartGame()
+    {
+        UnityEngine.SceneManagement.SceneManager.LoadScene("Presist");
+    }
+
+    public void QuitGame()
+    {
+        Application.Quit();
     }
 
 }
