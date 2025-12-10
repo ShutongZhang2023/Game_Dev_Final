@@ -1,27 +1,27 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class PCZoomToTarget : MonoBehaviour
+public class PCZoomToTargetWorld : MonoBehaviour
 {
-    public RectTransform dormContainer;
-    public RectTransform pcTarget;
+    public Transform dormRoot;
+    public Transform pcTarget;
     public GameObject pcPanel;
     public Button openPcButton;
 
     public float zoomDuration = 0.6f;
     public float zoomScale = 1.6f;
 
-    Vector2 originalPos;
+    Vector3 originalLocalPos;
     Vector3 originalScale;
     bool running;
     bool zoomedIn;
 
     void Awake()
     {
-        if (dormContainer != null)
+        if (dormRoot != null)
         {
-            originalPos = dormContainer.anchoredPosition;
-            originalScale = dormContainer.localScale;
+            originalLocalPos = dormRoot.localPosition;
+            originalScale = dormRoot.localScale;
         }
     }
 
@@ -29,7 +29,7 @@ public class PCZoomToTarget : MonoBehaviour
     {
         if (running) return;
         if (zoomedIn) return;
-        if (dormContainer == null || pcTarget == null || pcPanel == null) return;
+        if (dormRoot == null || pcTarget == null || pcPanel == null) return;
 
         running = true;
         if (openPcButton != null) openPcButton.interactable = false;
@@ -41,7 +41,7 @@ public class PCZoomToTarget : MonoBehaviour
     {
         if (running) return;
         if (!zoomedIn) return;
-        if (dormContainer == null) return;
+        if (dormRoot == null) return;
 
         running = true;
         if (pcPanel != null) pcPanel.SetActive(false);
@@ -51,11 +51,11 @@ public class PCZoomToTarget : MonoBehaviour
 
     System.Collections.IEnumerator ZoomInRoutine()
     {
-        Vector2 targetLocalPos = pcTarget.localPosition;
-        Vector2 targetPos = -targetLocalPos * zoomScale;
+        Vector3 targetLocalPos = pcTarget.localPosition;
+        Vector3 targetPos = -targetLocalPos * zoomScale;
 
-        Vector2 startPos = dormContainer.anchoredPosition;
-        Vector3 startScale = dormContainer.localScale;
+        Vector3 startPos = dormRoot.localPosition;
+        Vector3 startScale = dormRoot.localScale;
         Vector3 endScale = Vector3.one * zoomScale;
 
         float t = 0f;
@@ -64,13 +64,13 @@ public class PCZoomToTarget : MonoBehaviour
         {
             t += Time.deltaTime;
             float n = Mathf.Clamp01(t / zoomDuration);
-            dormContainer.localScale = Vector3.Lerp(startScale, endScale, n);
-            dormContainer.anchoredPosition = Vector2.Lerp(startPos, targetPos, n);
+            dormRoot.localScale = Vector3.Lerp(startScale, endScale, n);
+            dormRoot.localPosition = Vector3.Lerp(startPos, targetPos, n);
             yield return null;
         }
 
-        dormContainer.localScale = endScale;
-        dormContainer.anchoredPosition = targetPos;
+        dormRoot.localScale = endScale;
+        dormRoot.localPosition = targetPos;
 
         if (pcPanel != null) pcPanel.SetActive(true);
 
@@ -81,8 +81,8 @@ public class PCZoomToTarget : MonoBehaviour
 
     System.Collections.IEnumerator ZoomOutRoutine()
     {
-        Vector2 startPos = dormContainer.anchoredPosition;
-        Vector3 startScale = dormContainer.localScale;
+        Vector3 startPos = dormRoot.localPosition;
+        Vector3 startScale = dormRoot.localScale;
 
         float t = 0f;
 
@@ -90,13 +90,13 @@ public class PCZoomToTarget : MonoBehaviour
         {
             t += Time.deltaTime;
             float n = Mathf.Clamp01(t / zoomDuration);
-            dormContainer.localScale = Vector3.Lerp(startScale, originalScale, n);
-            dormContainer.anchoredPosition = Vector2.Lerp(startPos, originalPos, n);
+            dormRoot.localScale = Vector3.Lerp(startScale, originalScale, n);
+            dormRoot.localPosition = Vector3.Lerp(startPos, originalLocalPos, n);
             yield return null;
         }
 
-        dormContainer.localScale = originalScale;
-        dormContainer.anchoredPosition = originalPos;
+        dormRoot.localScale = originalScale;
+        dormRoot.localPosition = originalLocalPos;
 
         zoomedIn = false;
         running = false;

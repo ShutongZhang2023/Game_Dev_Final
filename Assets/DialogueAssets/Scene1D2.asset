@@ -66,7 +66,7 @@ MonoBehaviour:
     speaker: girl
     content: "I still have something I haven't said yet\u2026"
     choices: []
-    defaultNextNodeId: 
+    defaultNextNodeId: 5
   - id: 5
     nodeType: 0
     speaker: girl
