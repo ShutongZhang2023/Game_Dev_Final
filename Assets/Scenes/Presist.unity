@@ -4194,6 +4194,22 @@ PrefabInstance:
       propertyPath: 'childNodes.Array.data[2]'
       value: 
       objectReference: {fileID: 1404311759}
+    - target: {fileID: 2301060473761266479, guid: 34e107b5cdfc5e849be56e7c9d3e7429, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -5410232973277674549, guid: 77f7f2f427ec7e442a014ca6c7533bf5, type: 3}
+    - target: {fileID: 2301060473761266479, guid: 34e107b5cdfc5e849be56e7c9d3e7429, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2301060473761266479, guid: 34e107b5cdfc5e849be56e7c9d3e7429, type: 3}
+      propertyPath: m_Color.g
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2301060473761266479, guid: 34e107b5cdfc5e849be56e7c9d3e7429, type: 3}
+      propertyPath: m_Color.r
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 2524116468962263636, guid: 34e107b5cdfc5e849be56e7c9d3e7429, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
