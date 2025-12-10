@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using DG.Tweening;
 
 public class MemoryBubble : MonoBehaviour, IPointerClickHandler
 {
@@ -18,33 +20,37 @@ public class MemoryBubble : MonoBehaviour, IPointerClickHandler
     Vector3 baseScale;
     float growth;
     bool popped;
+    private RectTransform img;
 
     void Awake()
     {
         basePos = transform.localPosition;
         baseScale = transform.localScale;
+        img = GetComponent<RectTransform>();
     }
 
-    void Update()
-    {
-        if (popped) return;
+    //void Update()
+    //{
+    //    if (popped) return;
 
-        float t = Time.time;
-        transform.localPosition = basePos + Vector3.up * Mathf.Sin(t * floatSpeed) * floatAmplitude;
-        transform.localRotation = Quaternion.Euler(0, 0, Mathf.Sin(t * 0.7f) * tiltAmplitude);
+    //    float t = Time.time;
+    //    transform.localPosition = basePos + Vector3.up * Mathf.Sin(t * floatSpeed) * floatAmplitude;
+    //    transform.localRotation = Quaternion.Euler(0, 0, Mathf.Sin(t * 0.7f) * tiltAmplitude);
 
-        growth = Mathf.Max(0f, growth - shrinkSpeed * Time.deltaTime);
-        float scale = Mathf.Lerp(1f, maxScale, growth);
-        transform.localScale = baseScale * scale;
-    }
+    //    growth = Mathf.Max(0f, growth - shrinkSpeed * Time.deltaTime);
+    //    float scale = Mathf.Lerp(1f, maxScale, growth);
+    //    transform.localScale = baseScale * scale;
+    //}
 
     public void OnPointerClick(PointerEventData eventData)
     {
         if (popped) return;
         growth += growPerClick;
 
-        if (growth >= 1f)
+        img.DOScale(maxScale, 0.5f).OnComplete(() =>
+        {
             Pop();
+        });
     }
 
     void Pop()

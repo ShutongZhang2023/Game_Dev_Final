@@ -31,6 +31,7 @@ public class MetaRoomController : MonoBehaviour
         if (locked) return;
         locked = true;
         poppedCount++;
+        Debug.Log("Bubble popped! Total: " + poppedCount);
 
         dialogueController.gameObject.SetActive(true);
         dialogueController.StartDialogue(bubbleAsset, bubble.dialogueNodeId);
@@ -40,7 +41,7 @@ public class MetaRoomController : MonoBehaviour
     {
         locked = false;
 
-        if (!finalStarted && poppedCount >= FindObjectsOfType<MemoryBubble>(true).Length)
+        if (!finalStarted && poppedCount >= 5)
         {
             finalStarted = true;
             StartCoroutine(PlayFinal());
