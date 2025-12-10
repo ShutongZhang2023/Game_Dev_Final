@@ -11,29 +11,52 @@ public class PCZoomToTarget : MonoBehaviour
     public float zoomDuration = 0.6f;
     public float zoomScale = 1.6f;
 
-    Vector2 startPos;
-    Vector3 startScale;
+    Vector2 originalPos;
+    Vector3 originalScale;
     bool running;
+    bool zoomedIn;
+
+    void Awake()
+    {
+        if (dormContainer != null)
+        {
+            originalPos = dormContainer.anchoredPosition;
+            originalScale = dormContainer.localScale;
+        }
+    }
 
     public void OnClickOpenPC()
     {
         if (running) return;
-        if (dormContainer == null || pcTarget == null) return;
+        if (zoomedIn) return;
+        if (dormContainer == null || pcTarget == null || pcPanel == null) return;
 
         running = true;
         if (openPcButton != null) openPcButton.interactable = false;
 
-        startPos = dormContainer.anchoredPosition;
-        startScale = dormContainer.localScale;
-
-        StartCoroutine(ZoomRoutine());
+        StartCoroutine(ZoomInRoutine());
     }
 
-    System.Collections.IEnumerator ZoomRoutine()
+    public void OnClickClosePC()
     {
-        Vector2 screenCenter = Vector2.zero;
+        if (running) return;
+        if (!zoomedIn) return;
+        if (dormContainer == null) return;
+
+        running = true;
+        if (pcPanel != null) pcPanel.SetActive(false);
+
+        StartCoroutine(ZoomOutRoutine());
+    }
+
+    System.Collections.IEnumerator ZoomInRoutine()
+    {
         Vector2 targetLocalPos = pcTarget.localPosition;
         Vector2 targetPos = -targetLocalPos * zoomScale;
+
+        Vector2 startPos = dormContainer.anchoredPosition;
+        Vector3 startScale = dormContainer.localScale;
+        Vector3 endScale = Vector3.one * zoomScale;
 
         float t = 0f;
 
@@ -41,15 +64,47 @@ public class PCZoomToTarget : MonoBehaviour
         {
             t += Time.deltaTime;
             float n = Mathf.Clamp01(t / zoomDuration);
-            dormContainer.localScale = Vector3.Lerp(startScale, Vector3.one * zoomScale, n);
+            dormContainer.localScale = Vector3.Lerp(startScale, endScale, n);
             dormContainer.anchoredPosition = Vector2.Lerp(startPos, targetPos, n);
             yield return null;
         }
 
-        dormContainer.localScale = Vector3.one * zoomScale;
+        dormContainer.localScale = endScale;
         dormContainer.anchoredPosition = targetPos;
 
-        pcPanel.SetActive(true);
+        if (pcPanel != null) pcPanel.SetActive(true);
+
+        zoomedIn = true;
+        running = false;
         if (openPcButton != null) openPcButton.gameObject.SetActive(false);
+    }
+
+    System.Collections.IEnumerator ZoomOutRoutine()
+    {
+        Vector2 startPos = dormContainer.anchoredPosition;
+        Vector3 startScale = dormContainer.localScale;
+
+        float t = 0f;
+
+        while (t < zoomDuration)
+        {
+            t += Time.deltaTime;
+            float n = Mathf.Clamp01(t / zoomDuration);
+            dormContainer.localScale = Vector3.Lerp(startScale, originalScale, n);
+            dormContainer.anchoredPosition = Vector2.Lerp(startPos, originalPos, n);
+            yield return null;
+        }
+
+        dormContainer.localScale = originalScale;
+        dormContainer.anchoredPosition = originalPos;
+
+        zoomedIn = false;
+        running = false;
+
+        if (openPcButton != null)
+        {
+            openPcButton.gameObject.SetActive(true);
+            openPcButton.interactable = true;
+        }
     }
 }
