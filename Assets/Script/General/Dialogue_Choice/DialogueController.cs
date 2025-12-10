@@ -15,7 +15,7 @@ public class DialogueController : MonoBehaviour
     [Header("UI")]
     public TextMeshProUGUI contentText;
     public Transform choicesContainer;
-    public GameObject choiceButtonPrefab;
+    public GameObject choiceButtonPrefab, sayBg;
 
     [Header("Typewriter")]
     public float typeSpeed = 0.03f;
@@ -54,7 +54,7 @@ public class DialogueController : MonoBehaviour
 
         switch (currentNode.speaker) {
             case "narrator":
-                contentText.color = Color.white;
+                contentText.color = Color.black;
                 break;
             case "boy":
                 contentText.color = Color.blue;
@@ -63,7 +63,7 @@ public class DialogueController : MonoBehaviour
                 contentText.color = Color.magenta;
                 break;
             default:
-                contentText.color = Color.white;
+                contentText.color = Color.black;
                 break;
         }
 
@@ -88,6 +88,7 @@ public class DialogueController : MonoBehaviour
     //use for dialogue node
     private void ShowDialogueNode()
     {
+        sayBg.SetActive(true);
         string text = currentNode.content ?? "";
         StartTypewriter(text);
     }
@@ -153,8 +154,10 @@ public class DialogueController : MonoBehaviour
     //use for choice node
     private void ShowChoiceNode()
     {
+        sayBg.SetActive(false);
         textFinished = true;
         contentText.text = "";
+
         ShowChoicesImmediately();
     }
 
