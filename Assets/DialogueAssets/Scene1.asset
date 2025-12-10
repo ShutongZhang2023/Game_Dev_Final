@@ -28,15 +28,13 @@ MonoBehaviour:
   - id: 2
     nodeType: 0
     speaker: Narrator
-    content: I never really understood what she was holding on to, nor why she suddenly
-      became so sensitive.
+    content: 'I never really understood what she was holding on to, '
     choices: []
     defaultNextNodeId: 3
   - id: 3
     nodeType: 0
     speaker: Narrator
-    content: I never really understood what she was holding on to, nor why she suddenly
-      became so sensitive.
+    content: nor why she suddenly became so sensitive.
     choices: []
     defaultNextNodeId: 4
   - id: 4
