@@ -5802,7 +5802,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   persistentSceneName: Presist
-  firstSceneName: Scene2-2
+  firstSceneName: Scene1
 --- !u!4 &2047328975
 Transform:
   m_ObjectHideFlags: 0
