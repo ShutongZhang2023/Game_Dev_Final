@@ -102,4 +102,4 @@ MonoBehaviour:
     speaker: Narrator
     content: The tension in her shoulders drops. She wipes her eyes and looks at me properly.
     choices: []
-    defaultNextNodeId:
+    defaultNextNodeId: 

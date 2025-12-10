@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6977f3f826e876c49a1435cb4e36350f, type: 3}
+  m_Name: Scene7-2
+  m_EditorClassIdentifier: 
+  nodes:
+  - id: start
+    nodeType: 0
+    speaker: boy
+    content: "I don\u2019t know exactly what to say,"
+    choices: []
+    defaultNextNodeId: 1
+  - id: 1
+    nodeType: 0
+    speaker: boy
+    content: "and maybe there isn\u2019t a perfect way to say it."
+    choices: []
+    defaultNextNodeId: 2
+  - id: 2
+    nodeType: 0
+    speaker: boy
+    content: But this time, it has to come from me.
+    choices: []
+    defaultNextNodeId: 3
+  - id: 3
+    nodeType: 1
+    speaker: boy
+    content: "\u2026I should call her."
+    choices:
+    - choiceId: choice1
+      text: "\u2026I should just call her."
+      needFlag: 
+      nextNodeId: 
+      setFlag: Scene7Choice2
+      onChosen:
+        m_PersistentCalls:
+          m_Calls: []
+    defaultNextNodeId: 
